@@ -17,13 +17,18 @@
     <script>
         var perg = window.confirm('Irá informar seu nome?')
     </script>
-    <h1>Aula 2: teste</h1>   
+    <h1>Aula 2: Nome</h1>   
     <script>
     var nome = null
     if(perg == true){
         nome = window.prompt('Digite seu nome:');
+        document.write('Olá, ' + nome + ', seu nome tem ' + nome.length + ' letras.<br/>');
+        document.write('Seu nome em maiusculas é: ' + nome.toUpperCase() + '<br/>');
+        document.write('Seu nome em minusculas é :' + nome.toLowerCase());
     }
-    else{}
+    else{
+        document.write('Seu nome não foi informado.')
+    }
     </script>
 </body>
 </html>
