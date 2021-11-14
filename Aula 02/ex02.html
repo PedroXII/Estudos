@@ -22,7 +22,12 @@
     var nome = null
     if(perg == true){
         nome = window.prompt('Digite seu nome:');
+        x = window.prompt('Digite seu salário, em reais:');
+        Number.parseFloat(x);
+        salario = x.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+        //O NodeJS lê esta variável como: R$ (Valor do salário)
         document.write('Olá, ' + nome + ', seu nome tem ' + nome.length + ' letras.<br/>');
+        document.write('Seu salário é: R$ ' + salario + '<br/>');
         document.write('Seu nome em maiusculas é: ' + nome.toUpperCase() + '<br/>');
         document.write('Seu nome em minusculas é :' + nome.toLowerCase());
     }
@@ -32,3 +37,17 @@
     </script>
 </body>
 </html>
+<!--
+Outros comandos:
+x = 10
+x.toFixed(2) = 10.00
+x.replace('.', ',') = 10,00
+
+Conversão em Javascript
+String(x) = '10'
+Number(x) = 10
+
+Comentários
+CSS: /*  **  *\
+Javascript: //
+-->
