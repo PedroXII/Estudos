@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 3: Operadores</title>
+    <style>
+        body{
+            background-color: gray;
+            font: 25pt;
+        }
+    </style>
+</head>
+<body>
+    <h1>Operadores</h1>
+    <script>
+        a = Number(window.prompt('Digite o primeiro valor'));
+        b = Number(window.prompt('Digite o segundo valor'));
+        c = window.confirm('O segundo valor será String para a demonstração da operação de identificação?')
+        adi = a + b
+        sub = a - b
+        mul = a * b
+        div = a / b
+        pot = a**b
+        res = a % b
+        ma = a > b
+        me = a < b
+        igu = a == b
+        dif = a != b
+        mai = a >= b
+        mei = a <= b
+        if(c == true){
+            b = String(b);
+        }
+        idp = a === b
+        idn = a !== b
+        nao = !a == b
+        if(2 * a == b && b - 3 == a){
+            e = true
+        }
+        if(2 * a == b || b - 3 == a){
+            ou = true
+        }
+        else{
+            ou = false
+            e = false}
+        ter = a + b > 10 ? 'A + B é maior que dez, valor:' + adi: 'A + B não é maior que dez, valor: ' + adi;
+        document.write('A + B = ' + adi + '<br/>')
+        document.write('A - B = ' + sub + '<br/>')
+        document.write('A * B = ' + mul + '<br/>')
+        document.write('A / B = ' + div + '<br/>')
+        document.write('A ** B = ' + pot + '<br/>')
+        document.write('A % B = ' + res + '<br/>')
+        document.write('A > B = ' + ma + '<br/>')
+        document.write('A < B = ' + me + '<br/>')
+        document.write('A == B = ' + igu + '<br/>')
+        document.write('A != B = ' + dif + '<br/>')
+        document.write('A >= B = ' + mai + '<br/>')
+        document.write('A <= B = ' + mei + '<br/>')
+        document.write('A === B = ' + idp + '<br/>')
+        document.write('A !== B = ' + idn + '<br/>')
+        document.write('!A == B = ' + nao + '<br/>')
+        document.write('2 * A == B && B - 3 == A = ' + e + '<br/>')
+        document.write('2 * A == B || B - 3 == A = ' + ou + '<br/>')
+        document.write(ter)
+    </script>
+</body>
+</html>
+<!--
+Operadores
+    Aritméticos
+        5 + 2 = 7
+        5 - 2 = 3
+        5 * 2 = 10
+        5 / 2 = 2.5
+        5**2 = 25
+        5 % 2 = 1
+        Ordem de precendência
+        ()
+        **
+        *, /, %
+        +, -
+        Incremento
+        10++ ou ++10 = 11
+        10-- ou --10 = 9
+    Relacionais
+        5 > 8 false(maior do que) 
+        5 < 8 true(menor do que)
+        5 == 8 false(igual)
+        5 >= 8 false(maior ou igual)
+        5 <= 8 true(menor ou igual)
+        5 != 8 true(diferente)
+        Identidade
+            5 == 5 true
+            5 == '5' true
+            5 === '5' false(não possuem o mesmo tipo)
+            5 !== '5' true
+    Lógicos
+        !5 == 5 false (não)
+        5 == 5 && 5 < 4 false (e)
+        5 == 5 || 5 < 4 true (ou)
+    Ternários
+        teste ? true : false
+        exemplo:
+            5 == 5 ? 'Hello world!' : 'Hey!'
+            'Hello world'
+    Precendência dos operadores
+        Aritméticos
+        Relacionais
+        !
+        &&
+        ||
+-->
