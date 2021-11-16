@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 04: Interatividade</title>
+    <style>
+        body{
+            color: aliceblue;
+            background-color: black;
+            font: normal 20pt Arial;
+        }
+        div#area{
+            font: normal 20pt Arial;
+            background: red;
+            width: 300pt;
+            height: 300pt;
+            line-height: 300pt;
+            text-align: center;
+        }
+        div#area2{
+            font: normal 20t Arial;
+            background-color: deepskyblue;
+            width: 300pt;
+            height: 300pt;
+            line-height: 300pt;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id = "area" onclick = "clicar()" onmouseenter = "entrar()" onmouseout="sair()">
+    Interaja com o mouse.</div>
+    <div id = "area2" onmousemove="mover()" onmousedown="segurar()" onmouseup="soltar()">
+    <strong>Interaja com o mouse</strong></div>
+    <!--
+        Também pode ser feito assim:
+            var a = window.document.getElementById('area');
+            a.addEventListener('click', clicar)
+            a.addEventListener('mouseenter', entrar)
+            a.addEventListener('mouseout', sair)
+            var b = window.document.getElementById('area2');
+            b.addEventListener('mousemove', mover)
+            b.addEventListener('mousedown', segurar)
+            b.addEventListener('mouseup', soltar)
+    -->
+    <script>
+        function clicar(){
+            var a = window.document.getElementById('area');
+            a.style.background = 'green'
+            a.innerText = 'Clicou!'
+        }
+        function entrar(){
+            var a = window.document.getElementById('area');
+            a.innerText = 'Entrou!'
+        }
+        function sair(){
+            var a = window.document.getElementById('area');
+            a.style.background = 'red'
+            a.innerText = 'Saiu!'
+        }
+        function mover(){
+            var b = window.document.getElementById('area2');
+            b.innerText = 'Moveu!'
+        }
+        function segurar(){
+            var b = window.document.getElementById('area2');
+            b.innerText = 'Segurou!'
+        }
+        function soltar(){
+            var b = window.document.getElementById('area2');
+            b.innerText = 'Soltou!'
+        }
+    </script>
+    <input type="number" name="n1" id="n1">
+    <input type="number" name="n2" id="n2">
+    <br/>
+    <input type="button" value="somar" onclick="somar()">
+    <input type="button" value="subtrair" onclick="subtrair()">
+    <input type="button" value="multiplicar" onclick="multiplicar()">
+    <input type="button" value="dividir" onclick="dividir()">
+    <input type="button" value="potenciação" onclick="potenciação()">
+    <input type="button" value="resto" onclick="resto()">
+    <div id = 'resultado'> Resultado</div>
+    <script>
+        function somar(){
+            var a = window.document.getElementById('n1');
+            var b = window.document.querySelector('input#n2');//Mesmo resultado da linha acima.
+            var resul  = window.document.getElementById('resultado');
+            var x = Number(a.value)
+            var y = Number(b.value)
+            var som = x + y;
+            resultado.innerText = 'Resultado de: ' + x + ' + ' + y + ' = ' + som;
+        }
+        function subtrair(){
+            var a = window.document.getElementById('n1');
+            var b = window.document.querySelector('input#n2');//Mesmo resultado da linha acima.
+            var result = window.document.getElementById('resultado');
+            var x = Number(a.value)
+            var y = Number(b.value)
+            var sub = x - y;
+            resultado.innerText = 'Resultado de: ' + x + ' - ' + y + ' = ' + sub;
+        }
+        function multiplicar(){
+            var a = window.document.getElementById('n1');
+            var b = window.document.querySelector('input#n2');//Mesmo resultado da linha acima.
+            var result = window.document.getElementById('resultado');
+            var x = Number(a.value)
+            var y = Number(b.value)
+            var mul = x * y;
+            resultado.innerText = 'Resultado de: ' + x + ' * ' + y + ' = ' + mul;
+        }
+        function dividir(){
+            var a = window.document.getElementById('n1');
+            var b = window.document.querySelector('input#n2');//Mesmo resultado da linha acima.
+            var result = window.document.getElementById('resultado');
+            var x = Number(a.value)
+            var y = Number(b.value)
+            var div = x / y;
+            resultado.innerText = 'Resultado de: ' + x + ' / ' + y + ' = ' + div;
+        }
+        function potenciação(){
+            var a = window.document.getElementById('n1');
+            var b = window.document.querySelector('input#n2');//Mesmo resultado da linha acima.
+            var result = window.document.getElementById('resultado');
+            var x = Number(a.value)
+            var y = Number(b.value)
+            var pot = x ** y;
+            resultado.innerText = 'Resultado de: ' + x + ' ** ' + y + ' = ' + pot;
+        }
+        function resto(){
+            var a = window.document.getElementById('n1');
+            var b = window.document.querySelector('input#n2');//Mesmo resultado da linha acima.
+            var result = window.document.getElementById('resultado');
+            var x = Number(a.value)
+            var y = Number(b.value)
+            var res = x % y;
+            resultado.innerText = 'Resultado de: ' + x + ' % ' + y + ' = ' + res;
+        }
+    </script>
+</body>
+</html>
