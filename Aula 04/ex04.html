@@ -94,7 +94,7 @@
             var x = Number(a.value)
             var y = Number(b.value)
             var som = x + y;
-            resultado.innerText = 'Resultado de: ' + x + ' + ' + y + ' = ' + som;
+            resultado.innerHTML = 'Resultado de: ' + x + ' + ' + y + ' = <strong>' + som + '</strong>';
         }
         function subtrair(){
             var a = window.document.getElementById('n1');
@@ -103,7 +103,7 @@
             var x = Number(a.value)
             var y = Number(b.value)
             var sub = x - y;
-            resultado.innerText = 'Resultado de: ' + x + ' - ' + y + ' = ' + sub;
+            resultado.innerHTML = 'Resultado de: ' + x + ' - ' + y + ' = <strong>' + sub + '</strong>';
         }
         function multiplicar(){
             var a = window.document.getElementById('n1');
@@ -112,7 +112,7 @@
             var x = Number(a.value)
             var y = Number(b.value)
             var mul = x * y;
-            resultado.innerText = 'Resultado de: ' + x + ' * ' + y + ' = ' + mul;
+            resultado.innerHTML = 'Resultado de: ' + x + ' * ' + y + ' = <strong>' + mul + '</strong>';
         }
         function dividir(){
             var a = window.document.getElementById('n1');
@@ -121,7 +121,7 @@
             var x = Number(a.value)
             var y = Number(b.value)
             var div = x / y;
-            resultado.innerText = 'Resultado de: ' + x + ' / ' + y + ' = ' + div;
+            resultado.innerHTML = 'Resultado de: ' + x + ' / ' + y + ' = <strong>' + div + '</strong>';
         }
         function potenciação(){
             var a = window.document.getElementById('n1');
@@ -130,7 +130,7 @@
             var x = Number(a.value)
             var y = Number(b.value)
             var pot = x ** y;
-            resultado.innerText = 'Resultado de: ' + x + ' ** ' + y + ' = ' + pot;
+            resultado.innerHTML = 'Resultado de: ' + x + ' ** ' + y + ' = <strong>' + pot + '</strong>';
         }
         function resto(){
             var a = window.document.getElementById('n1');
@@ -139,7 +139,7 @@
             var x = Number(a.value)
             var y = Number(b.value)
             var res = x % y;
-            resultado.innerText = 'Resultado de: ' + x + ' % ' + y + ' = ' + res;
+            resultado.innerHTML = 'Resultado de: ' + x + ' % ' + y + ' = <strong>' + res + '</strong>';
         }
     </script>
 </body>
