@@ -141,6 +141,16 @@
             var res = x % y;
             resultado.innerHTML = 'Resultado de: ' + x + ' % ' + y + ' = <strong>' + res + '</strong>';
         }
+        var agora = new Date();
+        var ano = agora.getFullYear()
+        var mes = agora.getMonth() + 1
+        var dia = agora.getDay()
+        var hora = agora.getHours()
+        var minuto = agora.getMinutes()
+        var data = agora.getDate()
+        var tempo = agora.getTime()
+        document.write('<br/>Horário<br/>ano: ' + ano + '<br/>mes: ' + mes + '<br/>dia: ' + dia + '<br/>hora: ' + hora + '<br/>minuto: ' + minuto + '<br/>data: ' + data + '<br/>tempo: ' + tempo)
+        document.write('<br/>Data: ' + data + ' / ' + mes + ' / ' + ano)
     </script>
 </body>
 </html>
