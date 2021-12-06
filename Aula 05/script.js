@@ -11,7 +11,6 @@ if(hora > 13 && hora < 18){
     mensagem.innerHTML = `Boa tarde!<br/>São ${hora} horas.`
     imagem.src = 'tarde.png'
     document.body.style.background = 'rgb(255, 178, 36)'
-
 }
 if(hora >= 18 && hora <= 24){
     mensagem.innerHTML = `Boa noite!<br/>São ${hora} horas.`
