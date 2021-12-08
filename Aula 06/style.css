@@ -19,6 +19,9 @@ div#info{
 div#calcular{
     text-align: center;
 }
+div#resultado{
+    text-align: center;
+}
 footer{
     font: normal 10pt;
     font-style: italic;
