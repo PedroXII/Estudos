@@ -11,7 +11,11 @@
     <header>
         <h1>Aula 07: Matemática básica</h1>
     </header>
-    <section>
+    <section id = 'contador'>
+        <div id = 'titulo-contador'>
+            <strong>Contador</strong>
+        </div>
+        <br/>
         <div id = 'contador'>
             Inicio da contagem: <input type="number" id = 'inicio'>
             <br/>
@@ -20,10 +24,33 @@
             Sequência da contagem: <input type="number" id = 'sequencia'>
             <br/>
             <br/>
-            <input type="button" value="calcular" class="button" onclick="calcular()">
         </div>
-        <div id = 'resultado'>
+        <div id = contador-button>
+            <input type="button" value="calcular" class="button" onclick="calcularcontador()">
+        </div>
+        <div id = 'resultado-contador'>
             <br/>
+            Insira os dados corretamente e clique em "calcular".
+        </div>
+    </section>
+    <br/>
+    <section id = 'tabuada'>
+        <div id = 'titulo-tabuada'>
+            <strong>Tabuada</strong>
+        </div>
+        <br/>
+        <div id = 'tabuada'>
+            Número da tabuada: <input type="number" id = 'numero'>
+            <br/>
+            Final da tabuada: <input type="number" id = 'final-tabuada' value="10">
+            <br/>
+        </div>
+        <br/>
+        <div id = 'tabuada-button'>
+            <input type="button" value="calcular" class="button" onclick="calculartabuada()">
+        </div>
+        <br/>
+        <div id = 'resultado-tabuada'>
             Insira os dados corretamente e clique em "calcular".
         </div>
     </section>

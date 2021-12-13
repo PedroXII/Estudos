@@ -5,7 +5,7 @@ body{
 header{
     text-align: center;
 }
-section{
+section#contador{
     background: rgb(134, 134, 250);
     border-radius: 15px;
     padding: 10px;
@@ -13,10 +13,38 @@ section{
     margin: auto;
     box-shadow: 5px 5px 5px gray;
 }
+div#titulo-contador{
+    text-align: center;
+    font-size: 30px;
+}
+section#tabuada{
+    background: rgb(71, 160, 71);
+    border-radius: 15px;
+    width: 500px;
+    margin: auto;
+    box-shadow: 5px 5px 5px gray;
+    padding: 10px;
+}
 div#contador{
+    text-align: end;
+}
+div#contador-button{
     text-align: center;
 }
-div#resultado{
+div#resultado-contador{
+    text-align: center;
+}
+div#titulo-tabuada{
+    text-align: center;
+    font-size: 30px;
+}
+div#tabuada-button{
+    text-align: center;
+}
+div#tabuada{
+    text-align: end;
+}
+div#resultado-tabuada{
     text-align: center;
 }
 .button{
