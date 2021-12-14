@@ -51,6 +51,9 @@ div#resultado-tabuada{
     font-size: 20px;
     border-radius: 10px;
 }
+select#res-tab{
+    width: 200px;
+}
 footer{
     font: normal 10pt;
     font-style: italic;

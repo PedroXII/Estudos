@@ -55,7 +55,7 @@ try {
 // var e let é a mesma coisa.
 try {
     function calculartabuada(){
-        let mensagem = window.document.getElementById('resultado-tabuada')
+        let mensagem = window.document.getElementById('res-tab')
         let inicio = 1
         let getNumero = window.document.getElementById('numero')
         let setNumero = getNumero.value
@@ -63,16 +63,19 @@ try {
         let getFinalTabuada = window.document.getElementById('final-tabuada')
         let setFinalTabuada = getFinalTabuada.value
         let finaltabuada = Number(setFinalTabuada)
-        let tabuada = ''
         let resultado
         if(setNumero.length == 0 || setFinalTabuada.length == 0){
             window.alert('Erro!')
         }
         else{
+            mensagem.innerHTML = ''
+            mensagem.size = 10
             do{
+                let tabuada = document.createElement('option')
                 resultado = numero * inicio
-                tabuada = `${tabuada}${numero} * ${inicio} = ${resultado}<br/>`
-                mensagem.innerHTML = tabuada
+                tabuada.text = `${numero} x ${inicio} = ${resultado}`
+                mensagem.value = `tab${inicio}`
+                mensagem.appendChild(tabuada)
                 inicio++
             }
             while(inicio <= finaltabuada);
