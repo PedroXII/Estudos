@@ -1,4 +1,4 @@
-//Não há motivo tecnico para ter as palavras 'get' e 'set' nas variáveis.
+//Não há motivo técnico para ter as palavras 'get' e 'set' nas variáveis.
 
 try {
     function calcularcontador(){
@@ -32,6 +32,8 @@ try {
                     mensagem.innerHTML = `${resultado} \u{1F449} fim`
                 }
             }
+            inicio = Number(setInicio)
+            fim = Number(setFim)
             if(inicio > fim){
                 for(inicio; inicio >= fim; inicio = inicio - sequencia){
                     if(contador == 0){
@@ -47,6 +49,8 @@ try {
                     mensagem.innerHTML = `${resultado} \u{1F449} fim`
                 }
             }
+            inicio = Number(setInicio)
+            fim = Number(setFim)
         }
     }
 } catch (error) {
@@ -75,7 +79,7 @@ try {
                 resultado = numero * inicio
                 tabuada.text = `${numero} x ${inicio} = ${resultado}`
                 mensagem.value = `tab${inicio}`
-                mensagem.appendChild(tabuada)
+                mensagem.appendChild(tabuada) //Escrever na mensagem o elemento 'tabuada'.
                 inicio++
             }
             while(inicio <= finaltabuada);
