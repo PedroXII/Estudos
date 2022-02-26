@@ -5,4 +5,4 @@
 //Adicionar valores: a[4] = 8 ou a.push(8)
 //Saber o tamanho: a.length
 //Para ordenar: a.sort()
-//Lembrete: para usar um terminal  = console.log(a)
+//Lembrete: para usar um terminal = console.log(a)
