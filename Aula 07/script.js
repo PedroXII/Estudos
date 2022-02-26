@@ -79,7 +79,7 @@ try {
                 resultado = numero * inicio
                 tabuada.text = `${numero} x ${inicio} = ${resultado}`
                 mensagem.value = `tab${inicio}`
-                mensagem.appendChild(tabuada) //Escrever na mensagem o elemento 'tabuada'.
+                mensagem.appendChild(tabuada) //Escrever em 'mensagem' o elemento 'tabuada'.
                 inicio++
             }
             while(inicio <= finaltabuada);
