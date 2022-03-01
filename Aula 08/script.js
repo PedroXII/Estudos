@@ -6,3 +6,17 @@
 //Saber o tamanho: a.length
 //Para ordenar: a.sort()
 //Lembrete: para usar um terminal = console.log(a)
+/*Variação do for no JavaScript:
+for(let pos in a){
+    console.log(num[pos])
+}*/
+/*Buscando valores
+Em a = [5, 8, 6, 9]
+a.indexOf(5) == 0
+a.indexOf(8) == 1
+a.indexOf(10) == -1
+*/
+var a = [0, 1, 2, 3]
+for(let pos in a){
+    console.log(a[pos])
+}
