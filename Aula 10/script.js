@@ -18,6 +18,7 @@ function adicionar(){
 function calcular(){
     let size = termos.length
     let menor = termos[0]
+    let setMaior = termos.sort
     let maior = termos[size - 1]
     let soma = 0
     for(let x = 0; x <= size - 1; x++){
