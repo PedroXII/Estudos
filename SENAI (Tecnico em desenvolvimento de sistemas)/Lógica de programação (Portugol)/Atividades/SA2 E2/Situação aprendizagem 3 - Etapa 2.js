@@ -1,0 +1,3 @@
+let nome = "Carlos João", idade = 28, cpf = 5287468952, rg = 855748985102, telefone = 8586412548, endereco = "Sao Luis N 549", sexo = "Masculino"
+//Em JavaScript eu "declarei" cpf, rg e telefone como int porque a linguagem suporto varias casas decimais.
+console.log(`-----Dados-----\nNome: ${nome}\nIdade: ${idade} anos.\nCPF: ${cpf}\nRG: ${rg}\nTelefone: ${telefone}\nEndereco: ${endereco}\nSexo: ${sexo}`)
