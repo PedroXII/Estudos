@@ -1,14 +1,14 @@
-programa{
+programa{
 	inclua biblioteca Util
 	
-	const inteiro tamanho_total = 1000
+	const inteiro tamanho_total = 1000
 
 	cadeia livros[tamanho_total], prosseguir
 	inteiro tamanho, ponteiro = 0, novo_tamanho
 	logico primeiro_uso = verdadeiro
 	caracter comando
 	
-	funcao inicio(){
+	funcao inicio(){
 		se(primeiro_uso == verdadeiro){
 			escreva("Digite o tamanho máximo da pilha: ")
 			leia(tamanho)
@@ -98,11 +98,12 @@ programa{
 			escolha(comando){
 			caso '1':
 				limpa()
+				cadeia desempilhado = livros[ponteiro - 1]
 				para(inteiro i = 0; i < ponteiro; i++){
 					livros[ponteiro - 1] = livros[i + 1]
 				}
 				ponteiro--
-				escreva("O livro: ", livros[ponteiro - 1], " foi removido do pilha!")
+				escreva("O livro: ", desempilhado, " foi removido do pilha!")
 				Util.aguarde(2000)
 				inicio()
 				pare
@@ -201,10 +202,9 @@ programa{
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 413; 
- * @DOBRAMENTO-CODIGO = [60, 71, 85, 122, 151, 163, 179];
+ * @POSICAO-CURSOR = 4341; 
  * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = ;
+ * @SIMBOLOS-INSPECIONADOS = {livros, 6, 8, 6};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
