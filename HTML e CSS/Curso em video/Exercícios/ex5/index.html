@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="favicon/html-favicon.ico" type="image/x-icon">
+    <style>
+        mark{
+            background-color: aquamarine;
+        }
+    </style>
     <title>Exercício 05: Formatação de texto</title>
 </head>
 <body>
@@ -16,6 +21,20 @@
     <h2>Itálico x Ênfase</h2>
     <p>Nessa frase tem um <i>termo em itálico</i> usando a tag "i" (não semântica).</p>
     <p>Nessa frase tem um <em>termo em ênfase</em> usando a tag "em" (semântica).</p>
+    <h2>Texto marcado</h2>
+    <p>Nesse parágrafo há um <mark>termo marcado</mark> usando a tag "mark" (que teve sua cor de fundo redefinida por CSS).</p>
+    <h2>Texto grande e pequeno</h2>
+    <p>Há um <big>termo grande</big>, usando a tag "big", e um <small>termo pequeno</small>, usando a tag "small" neste parágrafo.</p>
+    <p>A tag "small" é semântica, ou seja não é obsoleta, enquanto a tag "big" não é semântica.<br>Uma teoria, feita pelo professor Gustavo Guanabara, é que isso ocorre porque as letras pequenas tem um significado em contratos<br> enquanto as letras grandes só alteram a forma e isso pode ser feito no CSS.</p>
+    <h2>Texto deletado</h2>
+    <p>Há um <del>termo excluído</del> nessa frase, usando a tag "del", indicando que ele deve ser lido, mas não considerado.</p>
+    <h2>Texto inserido</h2>
+    <p>Nessa frase há um <ins>termo inserido</ins>, usando a tag "ins", para dar ênfase e indicar que ele foi adicionado depois.</p>
+    <p>Existe também o <u>sublinhado</u>, usando a tag "u" (não semântica).</p>
+    <h2>Texto sobrescrito</h2>
+    <p>Nessa equação o número 4 está sobrescrito: x<sup>4</sup>=16, usando a tag "sup".</p>
+    <h2>Texto subescrito</h2>
+    <p>Nessa formula o número 2 está subescrito: H<sub>2</sub>O, usando a tag "sub".</p>
 </body>
 </html>
 <!--Ctrl + Shift + P, Wrap with abbreviation, assim você pode "envelopar" um texto escolhido com uma tag, no VS Code.-->
