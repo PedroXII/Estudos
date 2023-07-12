@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon/html-favicon.ico" type="image/x-icon">
+    <title>Exercício 06: Listas</title>
+</head>
+<body>
+    <h1>Trabalhando com listas</h1>
+    <h2>Listas Ordenadas</h2>
+    <ol type="A"><!--A tag ol(Ordened List) possui os elementos start, que define por qual termo a lista começa e o elemento type define qual tipo de numeração dos termos, seja a (letras minusculas), A (letras maiusculas), 1 (números), i (algorismos romanos minusculos) e I (algorismos romanos maiusculos).-->
+        <li>Peôes andam para frente.</li><!--A partir do HTML5 não é mais necessário fechar a tag li, ou seja usar /li.-->
+        <li>Cavalos andam em L.
+        <li>Torres andam reto.</li>
+        <li>Bispos andam em diagonal.</li>
+        <li>Rainhas andam reto e em diagonal.</li>
+        <li>Reis andam para qualquer próxima casa.</li>
+    </ol>
+    <h2>Listas não Ordenadas</h2>
+    <ul type="disc"><!--As ul(Unordered List) possui os tipos: square, circle e disc.-->
+        <li>Peôes andam para frente.
+        <li>Cavalos andam em L.
+        <li>Torres andam reto.</li>
+        <li>Bispos andam em diagonal.</li>
+        <li>Rainhas andam reto e em diagonal.</li>
+        <li>Reis andam para qualquer próxima casa.</li>
+    </ul>
+    <h2>Listas Mistas</h2>
+    <h3>Listas ordenadas mistas.</h3>
+    <ol>
+        Frutas
+        <ol type="A">
+            <li>Laranja</li>
+            <li>Maracujá</li>
+            <li>Acerola</li>
+            <li>Abacaxi</li>
+            <li>Tomate</li>
+        </ol>
+    </ol>
+    <ol>
+        Vegetais
+        <ol type="A" start="6"><!--Normalmente a contagem não continuaria na segunda lista, isso foi para só mostrar a função.-->
+            <li>Pepino</li>
+            <li>Pimentão</li>
+            <li>Abobrinha</li>
+            <li>Beterraba</li>
+            <li>Brócolis</li>
+        </ol>
+    </ol>
+    <h3>Listas não-ordenadas mistas</h3>
+    <ul>
+    <li>PlayStation 4</li>
+        <ul type="circle">
+        <li>Persona</li>
+            <ul><li>Persona 5 Royal</li>
+            </ul>
+        <li>Star wars</li>
+            <ul><li>Star Wars Battlefront</li>
+                <li>Star Wars Battlefront II</li>
+                <li>Star Wars Jedi Fallen Order</li>
+            </ul>
+        <li>Batman</li>
+            <ul><li>Batman Arkham Knight</li>
+            </ul>
+        </ul>
+    <li>PlayStation 5</li>
+        <ul><li>Star Wars</li>
+            <ul><li>Star Wars Survivor</li>
+            </ul>
+        <li>Spider-Man</li>
+            <ul><li>Spider-Man: Miles Morales</li>
+            <li>Spider-Man 2</li></ul>
+        <li>Persona</li>
+        <ul>
+            <li>Persona 6</li>
+            <li>Persona 3: Remake</li>
+        </ul>
+        </ul>
+    </ul>
+    <p>Os tipos de listas também podem ser misturados.<br>Exemplo:</p>
+    <ol><li>Frutas</li>
+        <ul><li>Maracujá</li>
+        <li>Limão</li>
+        <li>Acerola</li>
+        </ul>
+        <li>Livros</li>
+        <ul>
+            <li>A Song of Ice and Fire</li>
+            <li>Harry Potter</li>
+            <li>Guerra e Paz</li>
+        </ul>
+    </ol>
+    <h2>Lista de definições</h2>
+    <dl><!--Navegadores levam em consideração essas listas quando um usuário faz uma pesquisa.-->
+        <dt>HTML</dt>
+        <dd>Não é uma linguagem de programação, é responsável pelo "esqueleto" de uma página web,<br> ou seja, sua estrutura.</dd>
+        <dt>CSS</dt>
+        <dd>Responsável pela aparência da página web, também não é uma página web.</dd>
+        <dt>JavaScript</dt>
+        <dd>Linguagem de programação responsável pela interatividade e funções da página web.</dd>
+    </dl>
+</body>
+</html>
