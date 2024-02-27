@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unifor - Raciocínio Lógico e Algoritmo - Atividade Final</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <script>
+        try{
+            function mostrarNovoSalario(salario){
+                window.alert("O novo salário do funcionário é: " + salario.toFixed(2));
+            }
+
+            let comando;
+            let sair = false;
+            do{
+                comando = Number(prompt("Menu de opções:\n\n1. Novo salário\n2. Férias\n3. Décimo terceiro\n4. Sair\n\nDigite a opção desejada: "));
+
+                if(comando == 1){
+                    let salario = Number(prompt("NOVO SALÁRIO\n\nSalário atual do funcionário a receber o aumento:"));
+                    if(salario < 1200 && salario > 0){
+                        salario = salario + ((salario/100) * 15);
+                        mostrarNovoSalario(salario);
+                    }
+                    else if(salario >= 1200 && salario <= 2400){
+                        salario = salario + ((salario/100) * 10);
+                        mostrarNovoSalario(salario);
+                    }
+                    else if(salario > 2400){
+                        salario = salario + ((salario/100) * 5);
+                        mostrarNovoSalario(salario);
+                    }
+                    else if(salario < 0){
+                        window.alert("O salário não pode ser um número negativo.");
+                    }
+                    else{
+                        window.alert("Valor salárial inválido.");
+                    }      
+                }
+
+                else if(comando == 2){
+                    let ferias;
+                    ferias = Number(prompt("FÉRIAS\n\nDigite o salário do funcionário a receber as férias:"));
+                    ferias = ferias + (ferias / 3);
+                    window.alert("As férias do funcionário são " + ferias.toFixed(2) + ".");
+                }
+
+                else if(comando == 3){
+                    let salario;
+                    let meses;
+                    salario = Number(prompt("DÉCIMO TERCEIRO\n\nDigite o salário do funcionário a receber o décimo terceiro:"))
+                    meses = Number(prompt("DÉCIMO TERCEIRO\n\nDigite o número de meses desse ano que o funcionário a receber o décimo terceiro trabalhou:"))
+                    if(meses >= 0 && meses <= 12 && salario >= 0){
+                        window.alert("O décimo terceiro do funcionário é: " + ((salario * meses) / 12).toFixed(2));
+                    }
+                    else{
+                        window.alert("Salário ou número de meses inválidos!")
+                    }
+                }
+
+                else if(comando == 4){
+                    let confirmacao = Number(prompt("Deseja sair do programa?\n\n1.Sim\n2.Não\n\nDigite a opção desejada:"));
+                    if(confirmacao == 1){
+                        sair = true;
+                    }
+                }
+
+                else{
+                    window.alert("Comando inválido!");
+                }
+
+            }while(sair == false);
+        }catch(error){
+            window.alert("Você digitou algum dado incorreto, por favor tente de novo.");
+        }
+    </script>
+    <h1 style="text-align: center;">Equipe<br></h1>
+    <h2 style="text-align: center;">Grupo 5</h2>
+    <p style="text-align: center;"> Isaias Porto de Freitas Junior - 2326193<br> João Eduardo Fernandes B. P. dos Santos - 2327076<br> João Pedro Almeida Santos - 2327071<br> Maria Elisangela Santos Matos - 2314677<br> Morgana Garcia Rodrigues Maia - 2323067<br> Vivian Leigh Teixeira Salvi - 2313542</p>
+</body>
+</html>
