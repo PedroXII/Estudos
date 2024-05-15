@@ -19,7 +19,7 @@ public class Aluno extends Pessoa{
         this.bolsista = bolsista;
     }
 
-    public void gerarMatricula(){
+    public void definirMatricula(){
         Random aleatorio = new Random();
         int numeroMatricula;
         do {
@@ -34,8 +34,11 @@ public class Aluno extends Pessoa{
     }
 
     public boolean cadastrarAluno(long cpf, Aluno aluno){
+        boolean cadastrado = false;
         super.cadastrarPessoa(cpf, aluno);
-        return super.cadastrar(cpf, aluno, listaAlunos);
+        cadastrado = super.cadastrar(cpf, aluno, listaAlunos);
+        ordenarAlunos();
+        return cadastrado;
     }
 
     public boolean deletarAluno(int matricula){
@@ -75,7 +78,7 @@ public class Aluno extends Pessoa{
     public void listarAlunos(){
         ArrayList<String> informacoes = new ArrayList();
         for (int i = 0; i < listaAlunos.size(); i++) {
-            informacoes.add("Nome: " + listaAlunos.get(i).getNome() + ", Idade: " + listaAlunos.get(i).getIdade() + ", CPF: " + listaAlunos.get(i).getCpf() + ", Ocupação: " + listaAlunos.get(i).getOcupacao() + ", Matricula: " + listaAlunos.get(i).getMatricula() + ", Bolsista: " + listaAlunos.get(i).isBolsista());
+            informacoes.add(i + " - Nome: " + listaAlunos.get(i).getNome() + ", Idade: " + listaAlunos.get(i).getIdade() + ", CPF: " + listaAlunos.get(i).getCpf() + ", Ocupação: " + listaAlunos.get(i).getOcupacao() + ", Matricula: " + listaAlunos.get(i).getMatricula() + ", Bolsista: " + listaAlunos.get(i).isBolsista());
         }
         super.listar(informacoes);
     }
@@ -99,7 +102,7 @@ public class Aluno extends Pessoa{
         }
     }
     public void mensagemConfirmacaoAluno(ArrayList aluno){
-        super.mensagemConfirmacao(aluno);
+        super.mensagemConfirmacaoCadastro(aluno);
         System.out.println("Bolsista: " + aluno.get(4));
     }
     public Aluno obterDadosAluno(int matricula){

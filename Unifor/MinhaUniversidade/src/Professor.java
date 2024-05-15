@@ -12,14 +12,19 @@ public class Professor extends Pessoa{
         this.centro = centro;
     }
 
-    public void darAula(){
-        System.out.println("O(A) professor(a) " + super.getNome() + " deu uma aula de " + this.centro + ".");
+    public boolean cadastrarProfessor(long cpf, Professor professor){
+        boolean cadastrado = false;
+        super.cadastrarPessoa(cpf, professor);
+        cadastrar(cpf, professor, listaProfessores);
+        ordenarProfessores();
+        return cadastrado;
     }
 
-    public boolean cadastrarProfessor(long cpf, Professor professor){
-        super.cadastrarPessoa(cpf, professor);
-        return cadastrar(cpf, professor, listaProfessores);
+    public void darAula(int codigo){
+        System.out.println("O(A) professor(a) " + super.getNome() + " deu uma aula de " + this.centro + " para a turma "+ codigo +".");
     }
+
+
 
     public boolean deletarProfessor(long cpf){
         int size = listaProfessores.size();
@@ -32,6 +37,28 @@ public class Professor extends Pessoa{
             }
         }
         return existe;
+    }
+
+    public boolean existeProfessor(long cpf){
+        boolean existe = false;
+        for(int i = 0; i <listaProfessores.size(); i++){
+            if(listaProfessores.get(i).getCpf() == cpf){
+                existe = true;
+            }
+        }
+        return existe;
+    }
+
+    public void fazerAniversarioProfessor(long cpf){
+        super.fazerAniversario(cpf);
+        Professor aniversariante = new Professor();
+        for (int i = 0; i < listaProfessores.size(); i++){
+            if(listaProfessores.get(i).getCpf() == cpf){
+                aniversariante = listaProfessores.get(i);
+                aniversariante.setIdade(aniversariante.getIdade() + 1);
+                listaProfessores.set(i, aniversariante);
+            }
+        }
     }
 
     public void ordenarProfessores() {
@@ -56,24 +83,14 @@ public class Professor extends Pessoa{
     public void listarProfessores(){
         ArrayList<String> informacoes = new ArrayList();
         for (int i = 0; i < listaProfessores.size(); i++) {
-            informacoes.add("Nome: " + listaProfessores.get(i).getNome() + ", Idade: " + listaProfessores.get(i).getIdade() + ", CPF: " + listaProfessores.get(i).getCpf() + ", Ocupação: " + listaProfessores.get(i).getOcupacao() + ", Centro: " + listaProfessores.get(i).getCentro());
+            informacoes.add(i + " - Nome: " + listaProfessores.get(i).getNome() + ", Idade: " + listaProfessores.get(i).getIdade() + ", CPF: " + listaProfessores.get(i).getCpf() + ", Ocupação: " + listaProfessores.get(i).getOcupacao() + ", Centro: " + listaProfessores.get(i).getCentro());
         }
-        listar(informacoes);
+        super.listar(informacoes);
     }
 
-    public void fazerAniversarioProfessor(long cpf){
-        super.fazerAniversario(cpf);
-        Professor aniversariante = new Professor();
-        for (int i = 0; i < listaProfessores.size(); i++){
-            if(listaProfessores.get(i).getCpf() == cpf){
-                aniversariante = listaProfessores.get(i);
-                aniversariante.setIdade(aniversariante.getIdade() + 1);
-                listaProfessores.set(i, aniversariante);
-            }
-        }
-    }
+
     public void mensagemConfirmacaoProfessor(ArrayList professor){
-        super.mensagemConfirmacao(professor);
+        super.mensagemConfirmacaoCadastro(professor);
         System.out.println("Centro: " + professor.get(4));
     }
     public Professor obterDadosProfessor(long cpf){
@@ -83,6 +100,14 @@ public class Professor extends Pessoa{
                 professor = listaProfessores.get(i);
             }
         }
+        return professor;
+    }
+    public ArrayList menuCadastroProfessor(){
+        ArrayList professor = new ArrayList();
+        professor = super.menuDeCadastro("PROFESSOR");
+        System.out.println("Digite o centro de ensino do(a) professor(a): ");
+        String centro = ler.nextLine().toUpperCase();
+        professor.add(centro);
         return professor;
     }
 }

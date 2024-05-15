@@ -34,19 +34,23 @@ public class Disciplina {
         this.codigo = codigoDisciplina;
     }
 
-    public void listarDisciplinas(){
-        int size = listaDisciplinas.size();
-        for(int i = 0; i < size; i++){
-            System.out.println("Nome: " + listaDisciplinas.get(i).getNome() + ", Semestre: " + listaDisciplinas.get(i).getSemestre() + ", Código: " + listaDisciplinas.get(i).getCodigo());
-        }
-    }
-
     public boolean cadastrarDisciplina(Disciplina disciplina){
         boolean cadastrado = false;
         listaDisciplinas.add(disciplina);
         ordenarDisciplinas();
         cadastrado = true;
         return cadastrado;
+    }
+
+    public boolean checarDuplicacaoDisciplina(String nome, int semestre){
+        boolean existe = false;
+        int size = listaDisciplinas.size();
+        for(int i = 0; i < size; i++){
+            if(listaDisciplinas.get(i).getNome() == nome && listaDisciplinas.get(i).getSemestre() == semestre){
+                existe = true;
+            }
+        }
+        return existe;
     }
 
     public boolean deletarDisciplina(int codigo){
@@ -61,6 +65,35 @@ public class Disciplina {
             }
         }
         return existe;
+    }
+
+    public boolean existeDisciplina(int codigo){
+        boolean existe = false;
+        int size = listaDisciplinas.size();
+        for(int i = 0; i < size; i++){
+            if(listaDisciplinas.get(i).getCodigo() == codigo){
+                existe = true;
+            }
+        }
+        return existe;
+    }
+
+    public void listarDisciplinas(){
+        int size = listaDisciplinas.size();
+        for(int i = 0; i < size; i++){
+            System.out.println(i + " - Nome: " + listaDisciplinas.get(i).getNome() + ", Semestre: " + listaDisciplinas.get(i).getSemestre() + ", Código: " + listaDisciplinas.get(i).getCodigo());
+        }
+    }
+
+    public Disciplina obterDadosDisciplina(int codigo){
+        Disciplina disciplina = new Disciplina();
+        int size = listaDisciplinas.size();
+        for(int i = 0; i < size; i++){
+            if(listaDisciplinas.get(i).getCodigo() == codigo){
+                disciplina = listaDisciplinas.get(i);
+            }
+        }
+        return disciplina;
     }
 
     public void ordenarDisciplinas() {
@@ -80,38 +113,5 @@ public class Disciplina {
             }
             size--;
         }while(foiTrocado);
-    }
-
-    public boolean checarDuplicacaoDisciplina(String nome, int semestre){
-        boolean existe = false;
-        int size = listaDisciplinas.size();
-        for(int i = 0; i < size; i++){
-            if(listaDisciplinas.get(i).getNome() == nome && listaDisciplinas.get(i).getSemestre() == semestre){
-                existe = true;
-            }
-        }
-        return existe;
-    }
-
-    public boolean existeDisciplina(int codigo){
-        boolean existe = false;
-        int size = listaDisciplinas.size();
-        for(int i = 0; i < size; i++){
-            if(listaDisciplinas.get(i).getCodigo() == codigo){
-                existe = true;
-            }
-        }
-        return existe;
-    }
-
-    public Disciplina obterDadosDisciplina(int codigo){
-        Disciplina disciplina = new Disciplina();
-        int size = listaDisciplinas.size();
-        for(int i = 0; i < size; i++){
-            if(listaDisciplinas.get(i).getCodigo() == codigo){
-                disciplina = listaDisciplinas.get(i);
-            }
-        }
-        return disciplina;
     }
 }

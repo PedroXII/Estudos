@@ -13,8 +13,11 @@ public class Bolsista extends Aluno{
     }
 
     public boolean cadastrarBolsista(long cpf, Bolsista bolsista) {
+        boolean cadastrado = false;
         super.cadastrarAluno(cpf, bolsista);
-        return super.cadastrar(cpf, bolsista, listaBolsista);
+        super.cadastrar(cpf, bolsista, listaBolsista);
+        ordenarBolsistas();
+        return cadastrado;
     }
 
     public boolean deletarAlunoBolsista(int matricula) {
@@ -48,7 +51,7 @@ public class Bolsista extends Aluno{
     public void listarAlunosBolsistas(){
         ArrayList<String> informacoes = new ArrayList();
         for (int i = 0; i < listaBolsista.size(); i++) {
-            informacoes.add("Nome: " + listaBolsista.get(i).getNome() + ", Idade: " + listaBolsista.get(i).getIdade() + ", CPF: " + listaBolsista.get(i).getCpf() + ", Ocupação: " + listaBolsista.get(i).getOcupacao() + ", Matricula: " + listaBolsista.get(i).getMatricula() + ", Bolsista: " + listaBolsista.get(i).isBolsista() + ", Bolsa: " + listaBolsista.get(i).getBolsa() + "%");
+            informacoes.add(i + " - Nome: " + listaBolsista.get(i).getNome() + ", Idade: " + listaBolsista.get(i).getIdade() + ", CPF: " + listaBolsista.get(i).getCpf() + ", Ocupação: " + listaBolsista.get(i).getOcupacao() + ", Matricula: " + listaBolsista.get(i).getMatricula() + ", Bolsista: " + listaBolsista.get(i).isBolsista() + ", Bolsa: " + listaBolsista.get(i).getBolsa() + "%");
         }
         super.listar(informacoes);
     }

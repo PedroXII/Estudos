@@ -40,38 +40,23 @@ public class Pessoa {
         this.ocupacao = ocupacao;
     }
 
-    public void fazerAniversario(long cpf){
-        Pessoa aniversariante = new Pessoa();
-        for (int i = 0; i < listaPessoas.size(); i++){
-            if(listaPessoas.get(i).getCpf() == cpf){
-                aniversariante = listaPessoas.get(i);
-                aniversariante.setIdade(aniversariante.getIdade() + 1);
-                listaPessoas.set(i, aniversariante);
-            }
-        }
-    }
-    public boolean existe(long cpf){
-        boolean existe = false;
-        for (int i = 0; i < listaPessoas.size(); i++){
-            if(listaPessoas.get(i).getCpf() == cpf){
-                existe = true;
-            }
-        }
-        return existe;
-    }
     public boolean cadastrar(long cpf, Object pessoa, ArrayList lista){
-        boolean existe = false;
+        boolean cadastrado = false, existe = false;
         if(lista.contains(cpf)){
             existe = true;
         }
-        else if(!existe) {
+        if(!existe) {
             lista.add(pessoa);
+            cadastrado = true;
         }
-        return existe;
+        return cadastrado;
     }
 
-    public boolean cadastrarPessoa(long cpf, Object pessoa){
-        return cadastrar(cpf, pessoa, listaPessoas);
+    public boolean cadastrarPessoa(long cpf, Pessoa pessoa){
+        boolean cadastrado = false;
+        cadastrar(cpf, pessoa, listaPessoas);
+        ordenarPessoas();
+        return cadastrado;
     }
 
     public boolean deletarPessoa(long cpf){
@@ -87,23 +72,31 @@ public class Pessoa {
         return existe;
     }
 
-    public void ordenarPessoas() {
-        boolean foiTrocado = false;
-        int size = listaPessoas.size();
-        int comparacao;
-        do {
-            foiTrocado = false;
-            for (int i = 0; i < size - 1; i++) {
-                comparacao = listaPessoas.get(i).getNome().compareTo(listaPessoas.get(i+1).getNome());
-                if(comparacao > 0) {
-                    Pessoa aux = listaPessoas.get(i);
-                    listaPessoas.set(i, listaPessoas.get(i+1));
-                    listaPessoas.set(i+1, aux);
-                    foiTrocado = true;
-                }
+    public void exibirDadosPessoa(long cpf){
+        Pessoa pessoa = new Pessoa();
+        pessoa = pessoa.obterDadosPessoa(cpf);
+        System.out.println("Nome: " + pessoa.getNome() + "\nIdade: " + pessoa.getIdade() + "\nCPF: " + pessoa.getCpf() + "\nOcupacao: " + pessoa.getOcupacao());
+    }
+
+    public boolean existe(long cpf){
+        boolean existe = false;
+        for (int i = 0; i < listaPessoas.size(); i++){
+            if(listaPessoas.get(i).getCpf() == cpf){
+                existe = true;
             }
-            size--;
-        }while(foiTrocado);
+        }
+        return existe;
+    }
+
+    public void fazerAniversario(long cpf){
+        Pessoa aniversariante = new Pessoa();
+        for (int i = 0; i < listaPessoas.size(); i++){
+            if(listaPessoas.get(i).getCpf() == cpf){
+                aniversariante = listaPessoas.get(i);
+                aniversariante.setIdade(aniversariante.getIdade() + 1);
+                listaPessoas.set(i, aniversariante);
+            }
+        }
     }
 
     public void listar(ArrayList lista){
@@ -116,18 +109,23 @@ public class Pessoa {
     public void listarPessoas(){
         ArrayList<String> informacoes = new ArrayList();
         for (int i = 0; i < listaPessoas.size(); i++) {
-            informacoes.add("Nome: " + listaPessoas.get(i).getNome() + ", Idade: " + listaPessoas.get(i).getIdade() + ", CPF: " + listaPessoas.get(i).getCpf() + ", Ocupação: " + listaPessoas.get(i).getOcupacao());
+            informacoes.add(i + " - Nome: " + listaPessoas.get(i).getNome() + ", Idade: " + listaPessoas.get(i).getIdade() + ", CPF: " + listaPessoas.get(i).getCpf() + ", Ocupação: " + listaPessoas.get(i).getOcupacao());
         }
         listar(informacoes);
     }
 
     public void listarPessoasPorOcupacao(String ocupacao){
-        int size = listaPessoas.size();
-        for(int i = 0; i < size; i++){
+        ArrayList<String> informacoes = new ArrayList();
+        for(int i = 0; i < listaPessoas.size(); i++){
             if(listaPessoas.get(i).getOcupacao().equals(ocupacao)) {
-                System.out.println(listaPessoas.get(i));
+                informacoes.add(i + " - Nome: " + listaPessoas.get(i).getNome() + ", Idade: " + listaPessoas.get(i).getIdade() + ", CPF: " + listaPessoas.get(i).getCpf() + ", Ocupação: " + listaPessoas.get(i).getOcupacao());
             }
         }
+        listar(informacoes);
+    }
+
+    public void mensagemConfirmacaoCadastro(ArrayList pessoa){
+        System.out.println("Confira os dados:\n\nNome: " + pessoa.get(0) + "\nCPF: " + pessoa.get(1) + "\nIdade: " + pessoa.get(2) + "\nOcupacao: " + pessoa.get(3));
     }
 
     public ArrayList menuDeCadastro(String ocupacao){
@@ -148,19 +146,6 @@ public class Pessoa {
         return pessoa;
     }
 
-    public void mensagemConfirmacao(ArrayList pessoa){
-        System.out.println("Confira os dados:\n\nNome: " + pessoa.get(0) + "\nCPF: " + pessoa.get(1) + "\nIdade: " + pessoa.get(2) + "\nOcupacao: " + pessoa.get(3));
-    }
-
-    public void exibirDadosPessoa(long cpf){
-        Pessoa pessoa = new Pessoa();
-        for (int i = 0; i < listaPessoas.size(); i++) {
-            if(listaPessoas.get(i).getCpf() == cpf){
-                pessoa = listaPessoas.get(i);
-                System.out.println("Nome: " + pessoa.getNome() + "\nIdade: " + pessoa.getIdade() + "\nCPF: " + pessoa.getCpf() + "\nOcupacao: " + pessoa.getOcupacao());
-            }
-        }
-    }
     public Pessoa obterDadosPessoa(long cpf){
         Pessoa pessoa = new Pessoa();
         for (int i = 0; i < listaPessoas.size(); i++){
@@ -169,5 +154,24 @@ public class Pessoa {
             }
         }
         return pessoa;
+    }
+
+    public void ordenarPessoas() {
+        boolean foiTrocado = false;
+        int size = listaPessoas.size();
+        int comparacao;
+        do {
+            foiTrocado = false;
+            for (int i = 0; i < size - 1; i++) {
+                comparacao = listaPessoas.get(i).getNome().compareTo(listaPessoas.get(i+1).getNome());
+                if(comparacao > 0) {
+                    Pessoa aux = listaPessoas.get(i);
+                    listaPessoas.set(i, listaPessoas.get(i+1));
+                    listaPessoas.set(i+1, aux);
+                    foiTrocado = true;
+                }
+            }
+            size--;
+        }while(foiTrocado);
     }
 }

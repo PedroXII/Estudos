@@ -5,9 +5,9 @@ public class Turma {
     private int codigo;
     private Disciplina disciplina;
     private Professor professor;
-    private Aluno aluno;
-    private ArrayList<Aluno> turma = new ArrayList<Aluno>();
+    private ArrayList<Aluno> alunos = new ArrayList<Aluno>();
     private static  ArrayList<Integer> listaCodigosTurma = new ArrayList<>();
+    private static  ArrayList<Turma> listaTurma = new ArrayList<>();
 
     public int getCodigo() {
         return codigo;
@@ -25,6 +25,34 @@ public class Turma {
         this.professor = professor;
     }
 
+    public ArrayList<Aluno> getAlunos() {
+        return alunos;
+    }
+
+    public void setAlunos(ArrayList<Aluno> alunos) {
+        this.alunos = alunos;
+    }
+
+    public boolean adicionarAluno(Aluno aluno, int codigo) {
+        boolean adicionado = false;
+        Turma turma = new Turma();
+        turma = obterDadosTurma(codigo);
+        if(!existeEsseAlunoNaTurma(aluno.getMatricula(), turma.getCodigo())){
+            turma.alunos.add(aluno);
+            turma.ordenarAlunos();
+            adicionado = true;
+        }
+        return adicionado;
+    }
+
+    public boolean cadastrarTurma(Turma turma){
+        boolean cadastrado = false;
+        listaTurma.add(turma);
+        turma.ordenarTurmas();
+        cadastrado = true;
+        return  cadastrado;
+    }
+
     public void definirCodigoTurma() {
         Random aleatorio = new Random();
         int codigoTurma;
@@ -35,27 +63,94 @@ public class Turma {
         this.codigo = codigoTurma;
     }
 
-    public void adicionarAluno(Aluno aluno) {
-        turma.add(aluno);
-        ordenarAlunos();
+    public boolean deletarAluno(int codigo, int matricula) {
+        boolean deletado = false;
+        Turma turma = new Turma();
+        turma = obterDadosTurma(codigo);
+        for(int i = 0; i < turma.alunos.size(); i++){
+            if(turma.alunos.get(i).getMatricula() == matricula){
+                turma.alunos.remove(i);
+                deletado = true;
+            }
+        }
+        return deletado;
     }
 
-    public void removerAluno(Aluno aluno) {
-        turma.remove(aluno);
+    public boolean deletarTurma(int codigo) {
+        boolean deletado = false;
+        for(int i = 0; i < listaTurma.size(); i++){
+            if(listaTurma.get(i).getCodigo() == codigo){
+                listaCodigosTurma.remove(listaTurma.get(i).getCodigo());
+                listaTurma.remove(i);
+                deletado = true;
+            }
+        }
+        return deletado;
+    }
+
+    public boolean existeEsseAlunoNaTurma(int matricula, int codigo) {
+        boolean existe = false;
+        Turma turma = new Turma();
+        turma = obterDadosTurma(codigo);
+        for(int i = 0; i < turma.alunos.size(); i++){
+            if(turma.alunos.get(i).getMatricula() == matricula){
+                existe = true;
+            }
+        }
+        return existe;
+    }
+
+    public boolean existeTurma(int codigo){
+        boolean existe = false;
+        int size = listaTurma.size();
+        for(int i = 0; i < size; i++){
+            if(listaTurma.get(i).getCodigo() == codigo){
+                existe = true;
+            }
+        }
+        return existe;
+    }
+
+    public void listarTurmas(){
+        for(int i = 0; i < listaTurma.size(); i++){
+            System.out.println(i + " - Disciplina: " + listaTurma.get(i).getDisciplina().getNome() + ", Semestre: " + listaTurma.get(i) + ", Professor(a): " + listaTurma.get(i).getProfessor().getNome() + ", CPF do(a) professor: " + listaTurma.get(i).getProfessor().getCpf() + ", Quantidade de alunos: " + listaTurma.get(i).alunos.size() + ", Código: " + listaTurma.get(i).getCodigo());
+        }
+    }
+
+    public ArrayList<Aluno> obterAlunos(int codigo) {
+        ArrayList<Aluno> alunos = new ArrayList<>();
+        for(int i = 0; i < listaTurma.size(); i++){
+            if(listaTurma.get(i).getCodigo() == codigo){
+                for(int x = 0; x < listaTurma.get(i).alunos.size(); x++){
+                    alunos.add(listaTurma.get(i).alunos.get(x));
+                }
+            }
+        }
+        return alunos;
+    }
+
+    public Turma obterDadosTurma(int codigo){
+        Turma turma = new Turma();
+        for(int i = 0; i < listaTurma.size(); i++){
+            if(listaTurma.get(i).getCodigo() == codigo){
+                turma = listaTurma.get(i);
+            }
+        }
+        return turma;
     }
 
     public void ordenarAlunos() {
         boolean foiTrocado = false;
-        int size = turma.size();
+        int size = alunos.size();
         int comparacao;
         do {
             foiTrocado = false;
             for (int i = 0; i < size - 1; i++) {
-                comparacao = turma.get(i).getNome().compareTo(turma.get(i+1).getNome());
+                comparacao = alunos.get(i).getNome().compareTo(alunos.get(i+1).getNome());
                 if(comparacao > 0) {
-                    Aluno aux = turma.get(i);
-                    turma.set(i, turma.get(i+1));
-                    turma.set(i+1, aux);
+                    Aluno aux = alunos.get(i);
+                    alunos.set(i, alunos.get(i+1));
+                    alunos.set(i+1, aux);
                     foiTrocado = true;
                 }
             }
@@ -63,13 +158,36 @@ public class Turma {
         }while(foiTrocado);
     }
 
-    public void listarTurma() {
-        System.out.println("Código da turma: " + this.codigo +
-                "\nProfessor: " + this.professor +
-                "\nDisciplina: " + this.disciplina +
-                "\n\nAlunos:\n");
-        for (int i = 0; i < turma.size(); i++) {
-            System.out.println("Nome: " + turma.get(i).getNome() + ", Idade: " + turma.get(i).getIdade() + ", CPF: " + turma.get(i).getCpf() + ", Ocupação: " + turma.get(i).getOcupacao() + ", Matricula: " + turma.get(i).getMatricula() + ", Bolsista: " + turma.get(i).isBolsista());
+    public void ordenarTurmas() {
+        boolean foiTrocado = false;
+        int size = listaTurma.size();
+        int comparacao;
+        do {
+            foiTrocado = false;
+            for (int i = 0; i < size - 1; i++) {
+                comparacao = listaTurma.get(i).getDisciplina().getNome().compareTo(listaTurma.get(i+1).getDisciplina().getNome());
+                if(comparacao > 0) {
+                    Turma aux = listaTurma.get(i);
+                    listaTurma.set(i, listaTurma.get(i+1));
+                    listaTurma.set(i+1, aux);
+                    foiTrocado = true;
+                }
+            }
+            size--;
+        }while(foiTrocado);
+    }
+
+    public void exibirDadosTurma(int codigo) {
+        for(int i = 0; i < listaTurma.size(); i++){
+            if(listaTurma.get(i).getCodigo() == codigo){
+                System.out.println("Código da turma: " + listaTurma.get(i).getCodigo() +
+                        "\nProfessor: " + listaTurma.get(i).getProfessor() +
+                        "\nDisciplina: " + listaTurma.get(i).getDisciplina() +
+                        "\n\nAlunos:\n");
+                for (int x = 0; x < listaTurma.get(i).alunos.size(); x++) {
+                    System.out.println("Nome: " + alunos.get(x).getNome() + ", Idade: " + alunos.get(x).getIdade() + ", CPF: " + alunos.get(x).getCpf() + ", Ocupação: " + alunos.get(x).getOcupacao() + ", Matricula: " + alunos.get(x).getMatricula() + ", Bolsista: " + alunos.get(x).isBolsista());
+                }
+            }
         }
     }
 }
