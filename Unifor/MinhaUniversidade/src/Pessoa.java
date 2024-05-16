@@ -97,6 +97,7 @@ public class Pessoa {
                 listaPessoas.set(i, aniversariante);
             }
         }
+        System.out.println("Feliz " + aniversariante.getIdade() + "º aniversário, " + aniversariante.getNome() + "!");
     }
 
     public void listar(ArrayList lista){
@@ -104,14 +105,6 @@ public class Pessoa {
         for(int i = 0; i < size; i++){
             System.out.println(lista.get(i));
         }
-    }
-
-    public void listarPessoas(){
-        ArrayList<String> informacoes = new ArrayList();
-        for (int i = 0; i < listaPessoas.size(); i++) {
-            informacoes.add(i + " - Nome: " + listaPessoas.get(i).getNome() + ", Idade: " + listaPessoas.get(i).getIdade() + ", CPF: " + listaPessoas.get(i).getCpf() + ", Ocupação: " + listaPessoas.get(i).getOcupacao());
-        }
-        listar(informacoes);
     }
 
     public void listarPessoasPorOcupacao(String ocupacao){

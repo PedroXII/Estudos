@@ -12,9 +12,10 @@ public class Main {
         Aluno aluno = new Aluno();
         Bolsista bolsista = new Bolsista();
         Disciplina disciplina = new Disciplina();
+        Pessoa pessoa = new Pessoa();
         Professor professor = new Professor();
-        Visitante visitante = new Visitante();
         Turma turma = new Turma();
+        Visitante visitante = new Visitante();
         String mensagemErro = "ERRO!\nVerifique se você inseriu os dados corretamente e tente de novo.\nPressione [Enter] para continuar.";
 
         Aluno a1 = new Aluno();
@@ -56,23 +57,91 @@ public class Main {
         b2.cadastrarBolsista(b2.getCpf(), b2);
 
         Disciplina d1 = new Disciplina();
-        d1.setNome("Matemática");
+        d1.setNome("MATEMÁTICA");
         d1.setSemestre(1);
         d1.definirCodigoDisciplina();
         d1.cadastrarDisciplina(d1);
 
         Disciplina d2 = new Disciplina();
-        d2.setNome("Biologia");
+        d2.setNome("COMPUTACÃO");
         d2.setSemestre(2);
         d2.definirCodigoDisciplina();
         d2.cadastrarDisciplina(d2);
 
-        /*
+        Disciplina d3 = new Disciplina();
+        d3.setNome("BIOLOGIA");
+        d3.setSemestre(1);
+        d3.definirCodigoDisciplina();
+        d3.cadastrarDisciplina(d3);
+
         Professor p1 = new Professor();
+        p1.setNome("Stephen Hawking");
+        p1.setCpf(Long.parseLong("25478691321"));
+        p1.setIdade(76);
+        p1.setCentro("MATEMÁTICA");
+        p1.setOcupacao("PROFESSOR");
+        p1.cadastrarProfessor(p1.getCpf(), p1);
+
         Professor p2 = new Professor();
+        p2.setNome("Alan Turing");
+        p2.setCpf(Long.parseLong("52143674895"));
+        p2.setIdade(41);
+        p2.setCentro("COMPUTACÃO");
+        p2.setOcupacao("PROFESSOR");
+        p2.cadastrarProfessor(p2.getCpf(), p2);
+
+        Professor p3 = new Professor();
+        p3.setNome("Charles Darwin");
+        p3.setCpf(Long.parseLong("24657891356"));
+        p3.setIdade(73);
+        p3.setCentro("BIOLOGIA");
+        p3.setOcupacao("PROFESSOR");
+        p3.cadastrarProfessor(p3.getCpf(), p3);
+
         Visitante v1 = new Visitante();
+        v1.setNome("Camila Santos");
+        v1.setCpf(Long.parseLong("54862130478"));
+        v1.setIdade(28);
+        v1.setOcupacao("VISITANTE");
+        v1.cadastrarPessoa(v1.getCpf(), v1);
+
         Visitante v2 = new Visitante();
-        */
+        v2.setNome("Alexandre Silva");
+        v2.setCpf(Long.parseLong("74578671278"));
+        v2.setIdade(35);
+        v2.setOcupacao("VISITANTE");
+        v2.cadastrarPessoa(v2.getCpf(), v2);
+
+        Turma t1 = new Turma();
+        t1.setDisciplina(d1);
+        t1.setProfessor(p1);
+        t1.definirCodigoTurma();
+        t1.cadastrarTurma(t1);
+        t1.adicionarAluno(a1, t1.getCodigo());
+        t1.adicionarAluno(a2, t1.getCodigo());
+        t1.adicionarAluno(b1, t1.getCodigo());
+        t1.adicionarAluno(b2, t1.getCodigo());
+
+        Turma t2 = new Turma();
+        t2.setDisciplina(d2);
+        t2.setProfessor(p2);
+        t2.definirCodigoTurma();
+        t2.cadastrarTurma(t2);
+        t2.adicionarAluno(a1, t2.getCodigo());
+        t2.adicionarAluno(a2, t2.getCodigo());
+        t2.adicionarAluno(b1, t2.getCodigo());
+        t2.adicionarAluno(b2, t2.getCodigo());
+
+        Turma t3 = new Turma();
+        t3.setDisciplina(d3);
+        t3.setProfessor(p3);
+        t3.definirCodigoTurma();
+        t3.cadastrarTurma(t3);
+        t3.adicionarAluno(a1, t3.getCodigo());
+        t3.adicionarAluno(a2, t3.getCodigo());
+        t3.adicionarAluno(b1, t3.getCodigo());
+        t3.adicionarAluno(b2, t3.getCodigo());
+
         do {
             //try{
                 System.out.println
@@ -311,7 +380,7 @@ public class Main {
                             switch (comando){
                                 case "1":
                                     System.out.println("Digite o nome da disciplina: ");
-                                    disciplina.setNome(ler.nextLine());
+                                    disciplina.setNome(ler.nextLine().toUpperCase());
                                     System.out.println("Digite o semestre da disciplina: ");
                                     disciplina.setSemestre(Integer.parseInt(ler.nextLine()));
                                     if(disciplina.checarDuplicacaoDisciplina(disciplina.getNome(), disciplina.getSemestre())){
@@ -879,7 +948,40 @@ public class Main {
 
                     //Fazer aniversário.
                     case "6":
-
+                        System.out.println("Digite o CPF do(a) aniversariante: ");
+                        cpf = Long.parseLong(ler.nextLine());
+                        if (pessoa.existe(cpf)) {
+                            pessoa = pessoa.obterDadosPessoa(cpf);
+                            if (pessoa.getOcupacao().equalsIgnoreCase("VISITANTE")){
+                                visitante.obterDadosVisitante(cpf);
+                                visitante.fazerAniversario(cpf);
+                                System.out.println("Pressione [Enter] para continuar.");
+                                comando = ler.nextLine();
+                            }
+                            else if (pessoa.getOcupacao().equalsIgnoreCase("PROFESSOR")){
+                                professor = professor.obterDadosProfessor(cpf);
+                                professor.fazerAniversarioProfessor(cpf);
+                                System.out.println("Pressione [Enter] para continuar.");
+                                comando = ler.nextLine();
+                            }
+                            else if (pessoa.getOcupacao().equalsIgnoreCase("ALUNO")){
+                                aluno = aluno.obterDadosAlunoPorCPF(cpf);
+                                if (aluno.isBolsista()){
+                                    bolsista.fazerAniversarioAlunoBolsista(aluno.getCpf());
+                                    System.out.println("Pressione [Enter] para continuar.");
+                                    comando = ler.nextLine();
+                                }
+                                else{
+                                    aluno.fazerAniversarioAluno(cpf);
+                                    System.out.println("Pressione [Enter] para continuar.");
+                                    comando = ler.nextLine();
+                                }
+                            }
+                        }
+                        else {
+                            System.out.println("A pessoa com esse CPF não foi cadastrada!\n\nPressione [Enter] para continuar.");
+                            comando = ler.nextLine();
+                        }
                         break;
 
                     //Sair

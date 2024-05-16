@@ -113,7 +113,7 @@ public class Turma {
 
     public void listarTurmas(){
         for(int i = 0; i < listaTurma.size(); i++){
-            System.out.println(i + " - Disciplina: " + listaTurma.get(i).getDisciplina().getNome() + ", Semestre: " + listaTurma.get(i) + ", Professor(a): " + listaTurma.get(i).getProfessor().getNome() + ", CPF do(a) professor: " + listaTurma.get(i).getProfessor().getCpf() + ", Quantidade de alunos: " + listaTurma.get(i).alunos.size() + ", Código: " + listaTurma.get(i).getCodigo());
+            System.out.println(i + " - Disciplina: " + listaTurma.get(i).getDisciplina().getNome() + ", Semestre: " + listaTurma.get(i).getDisciplina().getSemestre() + ", Professor(a): " + listaTurma.get(i).getProfessor().getNome() + ", CPF do(a) professor: " + listaTurma.get(i).getProfessor().getCpf() + ", Quantidade de alunos: " + listaTurma.get(i).alunos.size() + ", Código: " + listaTurma.get(i).getCodigo());
         }
     }
 
@@ -181,11 +181,11 @@ public class Turma {
         for(int i = 0; i < listaTurma.size(); i++){
             if(listaTurma.get(i).getCodigo() == codigo){
                 System.out.println("Código da turma: " + listaTurma.get(i).getCodigo() +
-                        "\nProfessor: " + listaTurma.get(i).getProfessor() +
-                        "\nDisciplina: " + listaTurma.get(i).getDisciplina() +
+                        "\nProfessor: " + listaTurma.get(i).getProfessor().getNome() +
+                        "\nDisciplina: " + listaTurma.get(i).getDisciplina().getNome() +
                         "\n\nAlunos:\n");
                 for (int x = 0; x < listaTurma.get(i).alunos.size(); x++) {
-                    System.out.println("Nome: " + alunos.get(x).getNome() + ", Idade: " + alunos.get(x).getIdade() + ", CPF: " + alunos.get(x).getCpf() + ", Ocupação: " + alunos.get(x).getOcupacao() + ", Matricula: " + alunos.get(x).getMatricula() + ", Bolsista: " + alunos.get(x).isBolsista());
+                    System.out.println("Nome: " + listaTurma.get(i).getAlunos().get(x).getNome() + ", Idade: " + listaTurma.get(i).getAlunos().get(x).getIdade() + ", CPF: " + listaTurma.get(i).getAlunos().get(x).getCpf() + ", Ocupação: " + listaTurma.get(i).getAlunos().get(x).getOcupacao() + ", Matricula: " + listaTurma.get(i).getAlunos().get(x).getMatricula() + ", Bolsista: " + listaTurma.get(i).getAlunos().get(x).isBolsista());
                 }
             }
         }

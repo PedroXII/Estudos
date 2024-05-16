@@ -114,6 +114,15 @@ public class Aluno extends Pessoa{
         }
         return aluno;
     }
+    public Aluno obterDadosAlunoPorCPF(Long cpf){
+        Aluno aluno = new Aluno();
+        for (int i = 0; i < listaAlunos.size(); i++){
+            if(listaAlunos.get(i).getCpf() == cpf){
+                aluno = listaAlunos.get(i);
+            }
+        }
+        return aluno;
+    }
     public boolean existeMatricula(int matricula){
         boolean existe = false;
         for (int i = 0; i < listaAlunos.size(); i++) {
