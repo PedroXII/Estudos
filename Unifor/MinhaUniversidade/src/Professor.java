@@ -49,18 +49,6 @@ public class Professor extends Pessoa{
         return existe;
     }
 
-    public void fazerAniversarioProfessor(long cpf){
-        super.fazerAniversario(cpf);
-        Professor aniversariante = new Professor();
-        for (int i = 0; i < listaProfessores.size(); i++){
-            if(listaProfessores.get(i).getCpf() == cpf){
-                aniversariante = listaProfessores.get(i);
-                aniversariante.setIdade(aniversariante.getIdade() + 1);
-                listaProfessores.set(i, aniversariante);
-            }
-        }
-    }
-
     public void ordenarProfessores() {
         boolean foiTrocado = false;
         int size = listaProfessores.size();

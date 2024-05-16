@@ -48,14 +48,6 @@ public class Bolsista extends Aluno{
         return (super.pagarMensalidade() - desconto);
     }
 
-    public void listarAlunosBolsistas(){
-        ArrayList<String> informacoes = new ArrayList();
-        for (int i = 0; i < listaBolsista.size(); i++) {
-            informacoes.add(i + " - Nome: " + listaBolsista.get(i).getNome() + ", Idade: " + listaBolsista.get(i).getIdade() + ", CPF: " + listaBolsista.get(i).getCpf() + ", Ocupação: " + listaBolsista.get(i).getOcupacao() + ", Matricula: " + listaBolsista.get(i).getMatricula() + ", Bolsista: " + listaBolsista.get(i).isBolsista() + ", Bolsa: " + listaBolsista.get(i).getBolsa() + "%");
-        }
-        super.listar(informacoes);
-    }
-
     public void ordenarBolsistas(){
         boolean foiTrocado = false;
         int size = listaBolsista.size();
@@ -93,17 +85,7 @@ public class Bolsista extends Aluno{
         aluno.add(Integer.toString(bolsa));
         return aluno;
     }
-    public void fazerAniversarioAlunoBolsista(long cpf){
-        super.fazerAniversarioAluno(cpf);
-        Bolsista aniversariante = new Bolsista();
-        for (int i = 0; i < listaBolsista.size(); i++){
-            if(listaBolsista.get(i).getCpf() == cpf){
-                aniversariante = listaBolsista.get(i);
-                aniversariante.setIdade(aniversariante.getIdade() + 1);
-                listaBolsista.set(i, aniversariante);
-            }
-        }
-    }
+
     public void mensagemConfirmacaoAlunoBolsista(ArrayList aluno){
         super.mensagemConfirmacaoAluno(aluno);
         System.out.println("Bolsa: " + aluno.get(5));

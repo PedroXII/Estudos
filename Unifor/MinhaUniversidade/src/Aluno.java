@@ -90,17 +90,6 @@ public class Aluno extends Pessoa{
         return aluno;
     }
 
-    public void fazerAniversarioAluno(long cpf){
-        super.fazerAniversario(cpf);
-        Aluno aniversariante = new Aluno();
-        for (int i = 0; i < listaAlunos.size(); i++){
-            if(listaAlunos.get(i).getCpf() == cpf){
-                aniversariante = listaAlunos.get(i);
-                aniversariante.setIdade(aniversariante.getIdade() + 1);
-                listaAlunos.set(i, aniversariante);
-            }
-        }
-    }
     public void mensagemConfirmacaoAluno(ArrayList aluno){
         super.mensagemConfirmacaoCadastro(aluno);
         System.out.println("Bolsista: " + aluno.get(4));

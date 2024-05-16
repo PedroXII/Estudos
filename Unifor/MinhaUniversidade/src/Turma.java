@@ -63,7 +63,7 @@ public class Turma {
         this.codigo = codigoTurma;
     }
 
-    public boolean deletarAluno(int codigo, int matricula) {
+    public boolean removerAluno(int codigo, int matricula) {
         boolean deletado = false;
         Turma turma = new Turma();
         turma = obterDadosTurma(codigo);

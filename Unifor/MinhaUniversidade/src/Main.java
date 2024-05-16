@@ -143,7 +143,7 @@ public class Main {
         t3.adicionarAluno(b2, t3.getCodigo());
 
         do {
-            //try{
+            try{
                 System.out.println
                         ("=============== MINHA UNIVERSIDADE ==============\n" +
                                 "1 - Gerenciar alunos.\n" +
@@ -820,7 +820,7 @@ public class Main {
                                             comando = ler.nextLine();
                                             switch (comando){
                                                 case "1":
-                                                    boolean deletado = turma.deletarAluno(turma.getCodigo(), aluno.getMatricula());
+                                                    boolean deletado = turma.removerAluno(turma.getCodigo(), aluno.getMatricula());
                                                     if (deletado){
                                                         System.out.println("Aluno(a) adicionado(a) com sucesso!\n\nPressione [Enter] para continuar.");
                                                         comando = ler.nextLine();
@@ -960,19 +960,19 @@ public class Main {
                             }
                             else if (pessoa.getOcupacao().equalsIgnoreCase("PROFESSOR")){
                                 professor = professor.obterDadosProfessor(cpf);
-                                professor.fazerAniversarioProfessor(cpf);
+                                professor.fazerAniversario(cpf);
                                 System.out.println("Pressione [Enter] para continuar.");
                                 comando = ler.nextLine();
                             }
                             else if (pessoa.getOcupacao().equalsIgnoreCase("ALUNO")){
                                 aluno = aluno.obterDadosAlunoPorCPF(cpf);
                                 if (aluno.isBolsista()){
-                                    bolsista.fazerAniversarioAlunoBolsista(aluno.getCpf());
+                                    bolsista.fazerAniversario(aluno.getCpf());
                                     System.out.println("Pressione [Enter] para continuar.");
                                     comando = ler.nextLine();
                                 }
                                 else{
-                                    aluno.fazerAniversarioAluno(cpf);
+                                    aluno.fazerAniversario(cpf);
                                     System.out.println("Pressione [Enter] para continuar.");
                                     comando = ler.nextLine();
                                 }
@@ -1006,10 +1006,10 @@ public class Main {
                         break;
                     }
 
-            /*}catch (Exception A){
+            }catch (Exception A){
                 System.out.println(mensagemErro);
                 comando = ler.nextLine();
-            }*/
+            }
         }while (sair == false);
     }
 }
