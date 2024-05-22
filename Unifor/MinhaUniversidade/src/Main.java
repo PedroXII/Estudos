@@ -1,6 +1,23 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 
+/*
+* Commentários sobre o envio:
+* =============== Equipe 86 ===============
+* Ilana das Neves Barbosa - Matrícula: 2326948
+* Ionara dos Santos Ferreira - Matrícula: 2326251
+* Joao Pedro Almeida Santos - Matrícula: 2327071
+* Lucas Kauã Portela da Silva Nogueira - Matrícula:
+* Maria Vitoria Sampaio da Silva - Matrícula: 2323856
+* Vivian Leigh Teixeira Salvi - Matrícula: 2313542
+*
+* O programa está maior e tem mais funcionalidades do
+* que o pedido, mas tudo o que foi pedido está incluso
+* e está tudo bem sinalizado.
+*
+* O método "dar aula" está no menu dos professores.
+*/
+
 public class Main {
     public static void main(String[] args) {
         String comando;
@@ -57,13 +74,13 @@ public class Main {
         b2.cadastrarBolsista(b2.getCpf(), b2);
 
         Disciplina d1 = new Disciplina();
-        d1.setNome("MATEMÁTICA");
+        d1.setNome("MATEMATICA");
         d1.setSemestre(1);
         d1.definirCodigoDisciplina();
         d1.cadastrarDisciplina(d1);
 
         Disciplina d2 = new Disciplina();
-        d2.setNome("COMPUTACÃO");
+        d2.setNome("COMPUTACAO");
         d2.setSemestre(2);
         d2.definirCodigoDisciplina();
         d2.cadastrarDisciplina(d2);
@@ -78,7 +95,7 @@ public class Main {
         p1.setNome("Stephen Hawking");
         p1.setCpf(Long.parseLong("25478691321"));
         p1.setIdade(76);
-        p1.setCentro("MATEMÁTICA");
+        p1.setCentro("MATEMATICA");
         p1.setOcupacao("PROFESSOR");
         p1.cadastrarProfessor(p1.getCpf(), p1);
 
@@ -86,7 +103,7 @@ public class Main {
         p2.setNome("Alan Turing");
         p2.setCpf(Long.parseLong("52143674895"));
         p2.setIdade(41);
-        p2.setCentro("COMPUTACÃO");
+        p2.setCentro("COMPUTACAO");
         p2.setOcupacao("PROFESSOR");
         p2.cadastrarProfessor(p2.getCpf(), p2);
 
@@ -166,8 +183,8 @@ public class Main {
                                 "2 - Listar alunos.\n" +
                                 "3 - Remover aluno.\n" +
                                 "4 - Pagar mensalidade.\n" +
-                                "5 - Voltar para o menu principal.\n\n" +
-                                "Digite o número do comando desejado e pressione [Enter]:");
+                                "5 - Voltar para o menu principal.\n" +
+                                "\nDica: se não souber o dado de algum(a) aluno(a) é só usar a função 'Listar alunos'.\n\nDigite o número do comando desejado e pressione [Enter]:");
                             comando = ler.nextLine();
                             switch (comando){
                                 //Cadastrar aluno.
@@ -248,13 +265,13 @@ public class Main {
                                     break;
                                 //Listar alunos.
                                 case "2":
-                                    System.out.println("========== LISTA DE ALUNOS ==========");
                                     aluno.listarAlunos();
                                     System.out.println("\nPressione [Enter] para continuar.");
                                     comando = ler.nextLine();
                                     break;
                                 //Remover aluno.
                                 case "3":
+                                    aluno.listarAlunos();
                                     System.out.println("Digite a matricula do(a) aluno(a) a ser deletado(a):");
                                     int matricula = Integer.parseInt(ler.nextLine());
                                     if(aluno.existeMatricula(matricula)){
@@ -280,10 +297,9 @@ public class Main {
                                             }
                                         }
                                         else if(!aluno.isBolsista()){
-                                            aluno = aluno.obterDadosAluno(matricula);
                                             switch (comando){
                                                 case "1":
-                                                    aluno.deletarAluno(matricula);
+                                                    aluno.deletarAluno(aluno.getMatricula());
                                                     System.out.println("Aluno(a) deletado(a) com sucesso!\n\nPressione [Enter] para continuar.");
                                                     comando = ler.nextLine();
                                                     break;
@@ -303,13 +319,15 @@ public class Main {
                                     break;
                                 //Pagar mensalidade.
                                 case "4":
+                                    aluno.listarAlunos();
                                     System.out.println("Digite a matricula do(a) aluno(a) que vai pagar mensalidade:");
                                     matricula = Integer.parseInt(ler.nextLine());
                                     if(aluno.existeMatricula(matricula)) {
+                                        aluno = aluno.obterDadosAluno(matricula);
                                         if (aluno.isBolsista()) {
                                             bolsista = bolsista.obterDadosAlunoBolsista(matricula);
                                             System.out.println("========== Aluno ==========\n");
-                                            bolsista.exibirDadosPessoa(matricula);
+                                            bolsista.exibirDadosPessoa(bolsista.getCpf());
                                             System.out.println("Este(a) aluno(a) tem uma bolsa de " + bolsista.getBolsa() + "%.\n\n" + "Mensalidade: " + bolsista.pagarMensalidadeBolsista(bolsista.getCpf()) + "\nPagar mensalidade?\n\n1 - Sim.\n2 - Não.\n\nDigite o comando desejado e pressione [Enter]:");
                                             comando = ler.nextLine();
                                             switch (comando) {
@@ -328,7 +346,6 @@ public class Main {
                                             }
                                         }
                                         else if (!aluno.isBolsista()) {
-                                            aluno = aluno.obterDadosAluno(matricula);
                                             System.out.println("========== Aluno ==========\n");
                                             aluno.exibirDadosPessoa(aluno.getCpf());
                                             System.out.println("Mensalidade: " + aluno.pagarMensalidade() + "\nPagar mensalidade?\n\n1 - Sim.\n2 - Não.\n\nDigite o comando desejado e pressione [Enter]:");
@@ -374,7 +391,8 @@ public class Main {
                                     "1 - Adicionar disciplina.\n" +
                                     "2 - Deletar disciplina.\n" +
                                     "3 - Listar disciplinas.\n" +
-                                    "4 - Voltar ao menu principal.");
+                                    "4 - Voltar ao menu principal.\n" +
+                                    "\nDica: se não souber o dado de alguma disciplina é só usar a função 'Listar disciplinas'.\n\nDigite o número do comando e pressione [Enter]:");
                             comando = ler.nextLine();
                             //Adicionar disciplina.
                             switch (comando){
@@ -422,6 +440,7 @@ public class Main {
                                     break;
                                 //Deletar disciplina.
                                 case "2":
+                                    disciplina.listarDisciplinas();
                                     System.out.println("Digite o codigo da disciplina a ser deletada: ");
                                     codigo = Integer.parseInt(ler.nextLine());
                                     if(disciplina.existeDisciplina(codigo)){
@@ -449,7 +468,6 @@ public class Main {
                                     break;
                                 //Listar disciplina.
                                 case "3":
-                                    System.out.println("========== Disciplinas ==========");
                                     disciplina.listarDisciplinas();
                                     System.out.println("\nPressione [Enter] para continuar.");
                                     comando = ler.nextLine();
@@ -475,7 +493,7 @@ public class Main {
                                     "3 - Listar professores.\n" +
                                     "4 - Dar aula.\n" +
                                     "5 - Voltar ao menu principal.\n" +
-                                    "\nDigite o número do comando e pressione [Enter]:");
+                                    "\nDica: se não souber o dado de algum(a) professor(a) é só usar a função 'Listar professores'.\n\nDigite o número do comando e pressione [Enter]:");
                             comando = ler.nextLine();
                             switch (comando){
                                 //Adicionar professor.
@@ -510,6 +528,7 @@ public class Main {
                                     break;
                                 //Deletar professor.
                                 case "2":
+                                    professor.listarProfessores();
                                     System.out.println("Digite o CPF do(a) professor(a) a ser deletado(a): ");
                                     cpf = Long.parseLong(ler.nextLine());
                                     if(professor.existeProfessor(cpf)){
@@ -544,10 +563,14 @@ public class Main {
                                     break;
                                 //Dar aula.
                                 case "4":
+                                    professor.listarProfessores();
                                     System.out.println("Digite o CPF do(a) professor(a) que vai dar aula: ");
                                     cpf = Long.parseLong(ler.nextLine());
                                     if(professor.existeProfessor(cpf)){
                                         professor = professor.obterDadosProfessor(cpf);
+                                        turma.listarTurmas();
+                                        System.out.println("=============== Turmas ===============\n");
+                                        turma.listarTurmas();
                                         System.out.println("Digite o código da turma que o(a) professor(a) vai dar aula: ");
                                         int codigoTurma = Integer.parseInt(ler.nextLine());
                                         if(turma.existeTurma(codigoTurma)){
@@ -579,7 +602,7 @@ public class Main {
                                                 }
                                             }
                                             else {
-                                                System.out.println("O professor não ensina a disciplina dessa turma!\nEssa turma é de " + turma.getDisciplina() + "e o professor ensina " + professor.getCentro() + "\n\nPressione [Enter] para continuar.");
+                                                System.out.println("O professor não ensina a disciplina dessa turma!\nEssa turma é de " + turma.getDisciplina().getNome() + "e o professor ensina " + professor.getCentro() + "\n\nPressione [Enter] para continuar.");
                                                 comando = ler.nextLine();
                                             }
                                         }
@@ -616,16 +639,18 @@ public class Main {
                                     "5 - Adicionar um aluno a uma turma.\n" +
                                     "6 - Remover um aluno de uma turma.\n" +
                                     "7 - Voltar ao menu.\n" +
-                                    "\nDigite o número do comando desejado e pressione [Enter]:");
+                                    "\nDica: se não souber o dado de alguma turma é só usar a função 'Listar turmas'.\n\nDigite o número do comando desejado e pressione [Enter]:");
                             comando = ler.nextLine();
                             switch (comando){
                                 //Adicionar turma
                                 case "1":
+                                    disciplina.listarDisciplinas();
                                     System.out.println("\nDigite o código da disciplina e pressione [Enter]: ");
                                     codigo = Integer.parseInt(ler.nextLine());
                                     if(disciplina.existeDisciplina(codigo)){
                                         disciplina = disciplina.obterDadosDisciplina(codigo);
                                         turma.setDisciplina(disciplina);
+                                        professor.listarProfessores();
                                         System.out.println("\nDigite o CPF do(a) professor(a) e pressione [Enter]: ");
                                         cpf = Long.parseLong(ler.nextLine());
                                         if(professor.existeProfessor(cpf)){
@@ -636,6 +661,7 @@ public class Main {
                                             comando = ler.nextLine();
                                             switch (comando){
                                                 case "1":
+                                                    turma.listarTurmas();
                                                     System.out.println("Digite o código da turma a ter seus alunos copiados e pressione [Enter]: ");
                                                     codigo = Integer.parseInt(ler.nextLine());
                                                     if (turma.existeTurma(codigo)){
@@ -714,6 +740,7 @@ public class Main {
                                     break;
                                 //Remover turma.
                                 case "2":
+                                    turma.listarTurmas();
                                     System.out.println("Digite o código da turma a ser deletada: ");
                                     codigo = Integer.parseInt(ler.nextLine());
                                     if(turma.existeTurma(codigo)){
@@ -744,17 +771,16 @@ public class Main {
                                     break;
                                 //Listar turmas.
                                 case "3":
-                                    System.out.println("=============== Turmas ===============\n");
                                     turma.listarTurmas();
                                     System.out.println("\nPressione [Enter] para continuar.");
                                     comando = ler.nextLine();
                                     break;
                                 //Exibir dados de uma turma.
                                 case "4":
+                                    turma.listarTurmas();
                                     System.out.println("Digite o código da turma:");
                                     codigo = Integer.parseInt(ler.nextLine());
                                     if(turma.existeTurma(codigo)){
-                                        System.out.println("========== Turma ==========");
                                         turma.exibirDadosTurma(codigo);
                                         System.out.println("\nPressione [Enter] para continuar.");
                                         comando = ler.nextLine();
@@ -766,10 +792,12 @@ public class Main {
                                     break;
                                 //Adicionar um aluno a uma turma.
                                 case "5":
+                                    turma.listarTurmas();
                                     System.out.println("Digite o código da turma: ");
                                     codigo = Integer.parseInt(ler.nextLine());
                                     if(turma.existeTurma(codigo)){
                                         turma = turma.obterDadosTurma(codigo);
+                                        aluno.listarAlunos();
                                         System.out.println("Digite a matricula do(a) aluno(a) a ser adicionado(a) na turma: ");
                                         codigo = Integer.parseInt(ler.nextLine());
                                         if(!turma.existeEsseAlunoNaTurma(codigo, turma.getCodigo())){
@@ -808,10 +836,12 @@ public class Main {
                                     break;
                                 //Remover um aluno de uma turma.
                                 case "6":
+                                    turma.listarTurmas();
                                     System.out.println("Digite o código da turma: ");
                                     codigo = Integer.parseInt(ler.nextLine());
                                     if(turma.existeTurma(codigo)){
                                         turma = turma.obterDadosTurma(codigo);
+                                        turma.exibirDadosTurma(turma.getCodigo());
                                         System.out.println("Digite a matricula do(a) aluno(a) a ser removido(a) da turma: ");
                                         codigo = Integer.parseInt(ler.nextLine());
                                         if(turma.existeEsseAlunoNaTurma(codigo, turma.getCodigo())){
@@ -822,7 +852,7 @@ public class Main {
                                                 case "1":
                                                     boolean deletado = turma.removerAluno(turma.getCodigo(), aluno.getMatricula());
                                                     if (deletado){
-                                                        System.out.println("Aluno(a) adicionado(a) com sucesso!\n\nPressione [Enter] para continuar.");
+                                                        System.out.println("Aluno(a) removido(a) da turma com sucesso!\n\nPressione [Enter] para continuar.");
                                                         comando = ler.nextLine();
                                                     }
                                                     else {
@@ -868,7 +898,7 @@ public class Main {
                                     "2 - Deletar visitante.\n" +
                                     "3 - Listar visitantes.\n" +
                                     "4 - Voltar ao menu principal.\n" +
-                                    "\nDigite o número do comando e pressione [Enter]:");
+                                    "\nDica: se não souber o dado de algum(a) visitante é só usar a função 'Listar visitantes'.\n\nDigite o número do comando e pressione [Enter]:");
                             comando = ler.nextLine();
                             switch (comando){
                                 //Adicionar visitante.
@@ -902,6 +932,8 @@ public class Main {
                                     break;
                                 //Deletar visitante.
                                 case "2":
+                                    System.out.println("========== Visitantes ==========");
+                                    visitante.listarPessoasPorOcupacao("VISITANTE");
                                     System.out.println("Digite o CPF do(a) vsistante a ser deletado(a): ");
                                     cpf = Long.parseLong(ler.nextLine());
                                     if(visitante.existe(cpf)){
@@ -948,7 +980,9 @@ public class Main {
 
                     //Fazer aniversário.
                     case "6":
-                        System.out.println("Digite o CPF do(a) aniversariante: ");
+                        System.out.println("========== Fazer Aniversário ==========\n");
+                        pessoa.listarPessoas();
+                        System.out.println("\nDigite o CPF do(a) aniversariante: ");
                         cpf = Long.parseLong(ler.nextLine());
                         if (pessoa.existe(cpf)) {
                             pessoa = pessoa.obterDadosPessoa(cpf);
@@ -1011,5 +1045,12 @@ public class Main {
                 comando = ler.nextLine();
             }
         }while (sair == false);
+        System.out.println("=============== Equipe 86 ===============\n\n" +
+                        "Ilana das Neves Barbosa - Matrícula: 2326948\n" +
+                        "Ionara dos Santos Ferreira - Matrícula: 2326251\n" +
+                        "Joao Pedro Almeida Santos - Matrícula: 2327071\n" +
+                        "Lucas Kauã Portela da Silva Nogueira - Matrícula: \n" +
+                        "Maria Vitoria Sampaio da Silva - Matrícula: 2323856\n" +
+                        "Vivian Leigh Teixeira Salvi - Matrícula: 2313542\n");
     }
 }

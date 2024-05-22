@@ -112,6 +112,7 @@ public class Turma {
     }
 
     public void listarTurmas(){
+        System.out.println("=============== Turmas ===============");
         for(int i = 0; i < listaTurma.size(); i++){
             System.out.println(i + " - Disciplina: " + listaTurma.get(i).getDisciplina().getNome() + ", Semestre: " + listaTurma.get(i).getDisciplina().getSemestre() + ", Professor(a): " + listaTurma.get(i).getProfessor().getNome() + ", CPF do(a) professor: " + listaTurma.get(i).getProfessor().getCpf() + ", Quantidade de alunos: " + listaTurma.get(i).alunos.size() + ", Código: " + listaTurma.get(i).getCodigo());
         }
@@ -180,12 +181,13 @@ public class Turma {
     public void exibirDadosTurma(int codigo) {
         for(int i = 0; i < listaTurma.size(); i++){
             if(listaTurma.get(i).getCodigo() == codigo){
+                System.out.println("========== Turma ==========");
                 System.out.println("Código da turma: " + listaTurma.get(i).getCodigo() +
                         "\nProfessor: " + listaTurma.get(i).getProfessor().getNome() +
                         "\nDisciplina: " + listaTurma.get(i).getDisciplina().getNome() +
                         "\n\nAlunos:\n");
                 for (int x = 0; x < listaTurma.get(i).alunos.size(); x++) {
-                    System.out.println("Nome: " + listaTurma.get(i).getAlunos().get(x).getNome() + ", Idade: " + listaTurma.get(i).getAlunos().get(x).getIdade() + ", CPF: " + listaTurma.get(i).getAlunos().get(x).getCpf() + ", Ocupação: " + listaTurma.get(i).getAlunos().get(x).getOcupacao() + ", Matricula: " + listaTurma.get(i).getAlunos().get(x).getMatricula() + ", Bolsista: " + listaTurma.get(i).getAlunos().get(x).isBolsista());
+                    System.out.println("Nome: " + listaTurma.get(i).getAlunos().get(x).getNome() + ", Idade: " + listaTurma.get(i).getAlunos().get(x).getIdade() + ", CPF: " + listaTurma.get(i).getAlunos().get(x).getCpf() + ", Matricula: " + listaTurma.get(i).getAlunos().get(x).getMatricula() + ", Bolsista: " + listaTurma.get(i).getAlunos().get(x).isBolsista());
                 }
             }
         }

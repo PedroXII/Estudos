@@ -19,6 +19,14 @@ public class Aluno extends Pessoa{
         this.bolsista = bolsista;
     }
 
+    public boolean cadastrarAluno(long cpf, Aluno aluno){
+        boolean cadastrado = false;
+        super.cadastrarPessoa(cpf, aluno);
+        cadastrado = super.cadastrar(cpf, aluno, listaAlunos);
+        ordenarAlunos();
+        return cadastrado;
+    }
+
     public void definirMatricula(){
         Random aleatorio = new Random();
         int numeroMatricula;
@@ -29,31 +37,23 @@ public class Aluno extends Pessoa{
         this.matricula = numeroMatricula;
     }
 
-    protected float pagarMensalidade(){
-        return 500;
-    }
-
-    public boolean cadastrarAluno(long cpf, Aluno aluno){
-        boolean cadastrado = false;
-        super.cadastrarPessoa(cpf, aluno);
-        cadastrado = super.cadastrar(cpf, aluno, listaAlunos);
-        ordenarAlunos();
-        return cadastrado;
-    }
-
     public boolean deletarAluno(int matricula){
         int size = listaAlunos.size();
         boolean existe = false;
         for(int i = 0; i < size; i++){
             if(listaAlunos.get(i).getMatricula() == matricula){
+                listaMatriculas.remove(listaMatriculas.indexOf(listaAlunos.get(i).getMatricula()));
                 super.deletarPessoa(listaAlunos.get(i).getCpf());
                 listaAlunos.remove(listaAlunos.get(i));
-                listaMatriculas.remove(matricula);
                 existe = true;
                 size--;
             }
         }
         return existe;
+    }
+
+    protected float pagarMensalidade(){
+        return 500;
     }
 
     public void ordenarAlunos(){
@@ -77,6 +77,7 @@ public class Aluno extends Pessoa{
 
     public void listarAlunos(){
         ArrayList<String> informacoes = new ArrayList();
+        System.out.println("========== Alunos ==========");
         for (int i = 0; i < listaAlunos.size(); i++) {
             informacoes.add(i + " - Nome: " + listaAlunos.get(i).getNome() + ", Idade: " + listaAlunos.get(i).getIdade() + ", CPF: " + listaAlunos.get(i).getCpf() + ", Ocupação: " + listaAlunos.get(i).getOcupacao() + ", Matricula: " + listaAlunos.get(i).getMatricula() + ", Bolsista: " + listaAlunos.get(i).isBolsista());
         }

@@ -56,6 +56,7 @@ public class Pessoa {
         boolean cadastrado = false;
         cadastrar(cpf, pessoa, listaPessoas);
         ordenarPessoas();
+        cadastrado = true;
         return cadastrado;
     }
 
@@ -105,6 +106,14 @@ public class Pessoa {
         for(int i = 0; i < size; i++){
             System.out.println(lista.get(i));
         }
+    }
+
+    public void listarPessoas(){
+        ArrayList<String> informacoes = new ArrayList();
+        for(int i = 0; i < listaPessoas.size(); i++){
+            informacoes.add(i + " - Nome: " + listaPessoas.get(i).getNome() + ", Idade: " + listaPessoas.get(i).getIdade() + ", CPF: " + listaPessoas.get(i).getCpf() + ", Ocupação: " + listaPessoas.get(i).getOcupacao());
+        }
+        listar(informacoes);
     }
 
     public void listarPessoasPorOcupacao(String ocupacao){

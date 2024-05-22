@@ -15,7 +15,7 @@ public class Professor extends Pessoa{
     public boolean cadastrarProfessor(long cpf, Professor professor){
         boolean cadastrado = false;
         super.cadastrarPessoa(cpf, professor);
-        cadastrar(cpf, professor, listaProfessores);
+        cadastrado = cadastrar(cpf, professor, listaProfessores);
         ordenarProfessores();
         return cadastrado;
     }
@@ -31,6 +31,7 @@ public class Professor extends Pessoa{
         boolean existe = false;
         for(int i = 0; i < size; i++){
             if(listaProfessores.get(i).getCpf() == cpf){
+                super.deletarPessoa(listaProfessores.get(i).getCpf());
                 listaProfessores.remove(listaProfessores.get(i));
                 existe = true;
                 size--;
@@ -70,6 +71,7 @@ public class Professor extends Pessoa{
 
     public void listarProfessores(){
         ArrayList<String> informacoes = new ArrayList();
+        System.out.println("========== Professores ==========");
         for (int i = 0; i < listaProfessores.size(); i++) {
             informacoes.add(i + " - Nome: " + listaProfessores.get(i).getNome() + ", Idade: " + listaProfessores.get(i).getIdade() + ", CPF: " + listaProfessores.get(i).getCpf() + ", Ocupação: " + listaProfessores.get(i).getOcupacao() + ", Centro: " + listaProfessores.get(i).getCentro());
         }
@@ -93,7 +95,9 @@ public class Professor extends Pessoa{
     public ArrayList menuCadastroProfessor(){
         ArrayList professor = new ArrayList();
         professor = super.menuDeCadastro("PROFESSOR");
-        System.out.println("Digite o centro de ensino do(a) professor(a): ");
+        Disciplina disciplina = new Disciplina();
+        disciplina.listarDisciplinas();
+        System.out.println("Digite o nome do centro de ensino do(a) professor(a): ");
         String centro = ler.nextLine().toUpperCase();
         professor.add(centro);
         return professor;

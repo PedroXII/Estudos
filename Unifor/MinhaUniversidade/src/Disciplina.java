@@ -80,6 +80,7 @@ public class Disciplina {
 
     public void listarDisciplinas(){
         int size = listaDisciplinas.size();
+        System.out.println("========== Disciplinas ==========");
         for(int i = 0; i < size; i++){
             System.out.println(i + " - Nome: " + listaDisciplinas.get(i).getNome() + ", Semestre: " + listaDisciplinas.get(i).getSemestre() + ", Código: " + listaDisciplinas.get(i).getCodigo());
         }

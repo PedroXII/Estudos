@@ -15,17 +15,17 @@ public class Bolsista extends Aluno{
     public boolean cadastrarBolsista(long cpf, Bolsista bolsista) {
         boolean cadastrado = false;
         super.cadastrarAluno(cpf, bolsista);
-        super.cadastrar(cpf, bolsista, listaBolsista);
+        cadastrado = super.cadastrar(cpf, bolsista, listaBolsista);
         ordenarBolsistas();
         return cadastrado;
     }
 
     public boolean deletarAlunoBolsista(int matricula) {
-        super.deletarAluno(matricula);
         int size = listaBolsista.size();
         boolean existe = false;
         for(int i = 0; i < size; i++){
             if(listaBolsista.get(i).getMatricula() == matricula){
+                super.deletarAluno(matricula);
                 listaBolsista.remove(listaBolsista.get(i));
                 existe = true;
                 size--;
@@ -74,8 +74,8 @@ public class Bolsista extends Aluno{
         boolean bolsista = true;
         int bolsa;
         do {
-            System.out.println("\nOBS: Se você se enganou e o aluno não é bolsista preencha os próximos dados com\nqualquer valor válido e reinicie o cadastro.\n\nDigite a porcetagem de desconto da bolsa e pressione [Enter]:");
-            bolsa = super.ler.nextInt();
+            System.out.println("\nDigite a porcetagem de desconto da bolsa e pressione [Enter]:");
+            bolsa = Integer.parseInt(super.ler.nextLine());
             if (bolsa > 100 || bolsa < 0) {
                 System.out.println("Valor da bolsa inválido!\nDigite um número de 0 a 100.\n\nPressione [Enter] para continuar.");
                 comando = super.ler.nextLine();
