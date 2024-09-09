@@ -2,20 +2,20 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 /*
-* Commentários sobre o envio:
-* =============== Equipe 86 ===============
-* Ilana das Neves Barbosa - Matrícula: 2326948
-* Ionara dos Santos Ferreira - Matrícula: 2326251
-* Joao Pedro Almeida Santos - Matrícula: 2327071
-* Lucas Kauã Portela da Silva Nogueira - Matrícula:
-* Maria Vitoria Sampaio da Silva - Matrícula: 2323856
-* Vivian Leigh Teixeira Salvi - Matrícula: 2313542
-*
-* O programa está maior e tem mais funcionalidades do
-* que o pedido, mas tudo o que foi pedido está incluso
-* e está tudo bem sinalizado.
-*
-* O método "dar aula" está no menu dos professores.
+Commentários sobre o envio:
+=============== Equipe 86 ===============
+Ilana das Neves Barbosa - Matrícula: 2326948
+Ionara dos Santos Ferreira - Matrícula: 2326251
+Joao Pedro Almeida Santos - Matrícula: 2327071
+Lucas Kauã Portela da Silva Nogueira - Matrícula: 2323857
+Maria Vitoria Sampaio da Silva - Matrícula: 2323856
+Vivian Leigh Teixeira Salvi - Matrícula: 2313542
+
+O programa está maior e tem mais funcionalidades do
+que o pedido, mas tudo o que foi pedido está incluso
+e está tudo bem sinalizado.
+
+O método "dar aula" está no menu dos professores.
 */
 
 public class Main {
@@ -1049,7 +1049,7 @@ public class Main {
                         "Ilana das Neves Barbosa - Matrícula: 2326948\n" +
                         "Ionara dos Santos Ferreira - Matrícula: 2326251\n" +
                         "Joao Pedro Almeida Santos - Matrícula: 2327071\n" +
-                        "Lucas Kauã Portela da Silva Nogueira - Matrícula: \n" +
+                        "Lucas Kauã Portela da Silva Nogueira - Matrícula: 2323857\n" +
                         "Maria Vitoria Sampaio da Silva - Matrícula: 2323856\n" +
                         "Vivian Leigh Teixeira Salvi - Matrícula: 2313542\n");
     }

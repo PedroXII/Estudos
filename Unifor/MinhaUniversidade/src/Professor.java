@@ -24,8 +24,6 @@ public class Professor extends Pessoa{
         System.out.println("O(A) professor(a) " + super.getNome() + " deu uma aula de " + this.centro + " para a turma "+ codigo +".");
     }
 
-
-
     public boolean deletarProfessor(long cpf){
         int size = listaProfessores.size();
         boolean existe = false;
